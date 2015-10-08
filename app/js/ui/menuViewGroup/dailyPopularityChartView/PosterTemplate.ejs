@@ -1,0 +1,39 @@
+<% 
+  var chartName = (chartType == 'daily') ? '실시간' : (chartType == 'weekly') ? '주간' : '';
+  var image = asset == null ? '' : asset.getSmallImageFileName();
+  var ribbon = asset == null ? '' : UIHelper.getPosterRibbonNameForAsset(asset);
+  var title = asset == null ? '' : asset.getTitle();
+  var genre = asset == null ? '' : asset.getGenre();
+  var runningTime = asset == null ? '' : UIHelper.transformHourMinuteTimeToMinuteTime(asset.getRunningTime()) + '분';
+  var rating = asset == null ? '' : UIHelper.getRatingName(UIHelper.getNormalizationRating(asset.getRating()));
+  var director = asset == null ? '' : '감독:' + asset.getDirector();
+  var starring = asset == null ? '' : asset.getStarring();
+  var promotionCopy = asset == null ? '' : asset.getPromotionCopy();
+%>
+<div class="title">
+    <span class="icon_tdy"></span>
+    <span class="text_main"><%= chartName %></span>
+    <span class="text_sub"><%= ranking %></span>
+</div>
+<div class="title_underline"></div>
+<div>
+      <div class="poster"><img src="<%= image %>" onerror='this.src="resources/images/no_img.png"'/></div>
+      <div class="poster_ribbon <%= ribbon %>"></div>
+      <div class="poster_text_head"><%= title %></div>
+      <div class="poster_text_info01">
+<%  
+  if(asset != null) {
+%>    
+        <span class="genre"><%= genre %></span>
+        <span class="point">•</span>
+        <span class="time"><%= runningTime %></span>
+        <span class="point">•</span>
+        <span class="icon age mgt_2 <%= rating %>"></span>
+<%
+  };
+%>
+      </div>
+      <div class="poster_text_info02"><%= director%></div>
+      <div class="poster_text_info03"><%= starring %></div>
+      <div class="poster_text_info04"><%= promotionCopy %></div>
+</div>

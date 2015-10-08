@@ -1,0 +1,67 @@
+<%
+var product = model.getProduct();
+var bundleProduct = model.getBundleProduct();
+
+if(product != null)	{
+	var price = "";
+	var listPrice = "";
+	var viewablePeriodText = "";
+
+	if(bundleProduct != null) {
+		price = bundleProduct.getPrice();
+		listPrice = bundleProduct.getListPrice();
+		viewablePeriodText = DateHelper.getRentalPeriod(bundleProduct.getRentalDuration(), bundleProduct.getRentalDurationUnit());
+	} else {
+		price = product.getPrice();
+		listPrice = product.getListPrice();
+		viewablePeriodText = DateHelper.getViewablePeriodTextForPopup(product.getViewablePeriodState(), product.getViewablePeriod())
+	}
+
+%>
+<div class="headline_bg03">
+  <span class="subtext04">
+	<p class="row">
+	  <span class="head_text">쿠폰사용</span>
+	  <span class="sub_text01">
+	      <span class="price"><%= UIHelper.addThousandSeparatorCommas(price) %></span>
+	      <span class="won">원 차감</span>
+	  </span>
+	</p>
+	<p class="row">
+	    <span class="head_text">쿠폰잔액</span>
+	    <span class="sub_text01">
+		<span class="price"><%= UIHelper.addThousandSeparatorCommas(CouponManager.getTotalMoneyBalance()) %></span>
+		<span class="won">원</span>
+	    </span>
+	</p>  
+	<p class="row">
+	    <span class="head_text">시청기간</span>
+	    <span class="sub_text01">
+		<span class="num"><%= viewablePeriodText %></span>
+		<!--span class="won">일</span-->
+	    </span>
+	</p>                       
+	  </span>           
+</div>
+<div class="bodyline_dd">쿠폰 적용이 가능합니다. 구매하시겠습니까?</div>
+<%        
+	var subSpanText = model.getInputField().getDefaultText();
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass();
+%>
+		<div class="bodyline_bb <%=textType%>"><%= subSpanText%></div>
+<%
+	}
+%>          
+
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+<%
+	var passwordLength = model.getInputField().getSize();
+	for(var i = 0; i < passwordLength; i++) { 
+%>
+			    <span class="num01 after"></span>
+<%  
+	} 
+}
+%>
+        </div>

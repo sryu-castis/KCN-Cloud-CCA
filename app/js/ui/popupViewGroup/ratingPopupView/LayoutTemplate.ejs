@@ -1,0 +1,31 @@
+<div id="popup_m"> <!--팝업 전체 시작 -->
+    <div class="bg"> <!--bg시작 -->
+        <div class="title">
+            <!--span class="icon_tit won"></span><!-- check, won, del, note, clock, arrow, action, adult, plus, point, 행 삭제(텍스트만 있을경우 사용하지 않음.) 중 택일-->
+            <span class="text">관객평점</span>
+        </div>
+        <div class="body_headtext_score row01">관객평점을 매기시겠습니까?</div ><!--1줄일때 row01, 2줄일때 row2 -->
+        <div class="body_subtext_score row02">고객님이 평가하신 점수는 전체 평점에 반영됩니다.<br>별점으로 VOD를 평가해 주세요.</div> <!--1줄일때 row01, 2줄일때 row2 -->
+        <div class="body_scorebox focus"> <!-- unfocus, focus 중 택일-->
+            <span class="arw_left"></span>
+            <span class="star a01 foucs"></span> <!-- 최소 별점이 1이므로 고정으로 focus-->
+            <span class="star a02 unfocus"></span> <!-- unfocus, focus 중 택일-->
+            <span class="star a03 unfocus"></span> <!-- unfocus, focus 중 택일-->
+            <span class="star a04 unfocus"></span> <!-- unfocus, focus 중 택일-->
+            <span class="star a05 unfocus"></span> <!-- unfocus, focus 중 택일-->
+            <span class="arw_right"></span>
+        </div>
+        <div class="area_btn">
+<%
+			var buttonSize = model.getButtonGroup().getSize();
+        	if(buttonSize > 0) {
+            	for(var i = 0; i < buttonSize; i++) {
+%>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+				}
+            }
+%>
+        </div>
+  </div><!--bg_center 끝-->
+</div><!--//팝업 전체 끝-->

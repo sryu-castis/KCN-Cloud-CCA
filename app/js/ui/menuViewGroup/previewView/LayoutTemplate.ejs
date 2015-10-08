@@ -1,0 +1,47 @@
+<div class="bg_submenu_list"><!--서브 메뉴 텍스트 배경 시작-->
+    <div class="bg_submenu" id="previewList"><!--서브 메뉴 리스트 영역 시작-->
+        <ul class="submenu_list">
+            <%
+            var categoryList = model.getData();
+            var max = model.getVVisibleSize();
+            for(var i = 0; i < max; i++) {
+                var categoryName = "";
+                if (categoryList != null && categoryList[i] != null) {
+                    categoryName = categoryList[i].getCategoryName();
+                }
+            %>
+            <li class="submenu_box">
+                <span class="submenu_text"><%= categoryName %></span>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+    <!--서브 메뉴 리스트 영역 끝 -->
+
+
+    <div id="vod_list02"><!-- 포스터 리스트 시작-->
+        <%
+        var contentGroupList = model.getContentGroupList();
+        var contentSize = contentGroupList ? contentGroupList.length : 0;
+        var groupSize = Math.ceil(contentSize / 3);
+
+        for (var i = 0; i < groupSize; i++) { %>
+            <div class="poster_group01"><!-- 1행 시작-->
+            <%
+                for (var j = 0; j < 3 && contentSize > (i * 3) + j ; j++) {
+                    var contentGroup = contentGroupList[i * 3 + j];
+                    var imageURL = contentGroup.getSmallImageFileName();
+                    var titleText = contentGroup.getTitle();
+                    var riboonName = UIHelper.getPosterRibbonName(contentGroup);
+                    %>
+
+                <ul class="poster">
+                    <li class="img" ><img src="<%= imageURL%>" onerror='this.src="resources/images/no_img_middle.png"'/></li>
+                    <li class="text"><%= titleText%></li>
+                    <li class="ribbon <%= riboonName%>"></li>
+                </ul>
+            <% } %>
+            </div> <!-- 2행 끝-->
+        <% } %>
+    </div><!-- //포스터 리스트 끝-->
+</div>

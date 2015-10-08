@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>VOD</title>
+    <!-- TODO : Common API -->
+
+    <!-- TODO : reference lib js -->
+    <script src="resources/libs/jquery.min.js"></script>
+    <script src="resources/libs/ejs_production.js"></script>
+    <script src="resources/libs/ejs.js"></script>
+    <script src="resources/libs/cnmAutomata.js"></script>
+    <script src="js/css/cssApi.min.js"></script>
+    <script src="js/css/cssWrapper.js"></script>
+    <!-- TODO : App js -->
+    <script data-main="js/CCABase.js" src="resources/libs/require.2.1.15.min.js"></script>
+    <script src="js/cca/TVKeyValue.js"></script>
+
+    <!-- TODO : Style sheets code -->
+    <link rel="stylesheet" href="resources/css/style.min.css" type="text/css">
+
+    <!-- TODO : Javascript code -->
+    <script>
+        function on_key_down() {
+            if (window.CCABase && window.CCABase.ccaService) {
+                preventBrowserDefaultNavigation();
+                return window.CCABase.ccaService.onKeyDown(event);
+            }
+        }
+
+        //@Comment backspace key 를 브라우저 네비게이션을 막기 위한코드
+        function preventBrowserDefaultNavigation() {
+            if (event.keyCode == 8 || event.keyCode == 405) {
+                event.preventDefault();
+            }
+        }
+
+        $(document).ready(function () {
+            //@TODO ccabase 보다 먼저 실행됨. 필요한 작업이 있으면 진행
+            //@Comment 기본 설정값들을 저장할 변수 선언
+            CCASetting = {};
+        });
+
+        window.onerror = function(message, url, linenumber) {
+            var msg = "window.onerror\\r\n";
+            msg += '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n';
+            msg += 'message   : ' + message + "\r\n";
+            msg += 'url       : ' + url + "\r\n";
+            msg += 'linenumber: ' + linenumber + "\r\n";
+            msg += '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@';
+            cssWrapper.log(msg);
+        }
+    </script>
+</head>
+
+<body onkeydown='on_key_down()' >
+<style type="text/css">
+    #preloadingContainer {
+        background-image: url('resources/images/cloud_bg01.png'), url('resources/images/cloud_bg02.png'), url('resources/images/cloud_btn.png'), url('resources/images/cloud_etc.png'), url('resources/images/cloud_promotion.png');
+        width: 0px;
+        height: 0px;
+        display: inline;
+    }
+</style>
+<div id="vod_container"></div>
+<div id="preloadingContainer">
+</div>
+</body>
+</html>

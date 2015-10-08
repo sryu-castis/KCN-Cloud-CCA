@@ -1,0 +1,56 @@
+<div id="popup_large01"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text"><%= model.getDiscountCoupon().getCouponClassName() %></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+<%
+        var headText = model.getDiscountCoupon().getCouponName();
+        var discountType = model.getDiscountCoupon().getDiscountType();
+        var price = UIHelper.addThousandSeparatorCommas(model.getDiscountCoupon().getDiscountAmount());
+		var expireDate = model.getDiscountCoupon().getExpirationTime().split(" ")[0];
+		var isUsed = model.getDiscountCoupon().getDiscountCouponState();
+		var state="";
+		if(isUsed == "001")	{
+			state = "미사용";
+		}
+		else if(isUsed == "101")	{
+			state = "발행중";
+		}
+		else if(isUsed == "201")	{
+			state = "사용";
+		}
+		else if(isUsed == "301")	{
+			state = "기간만료";
+		}
+		
+%>
+        <div class="body_title"><%= headText%></div>
+        <div class="headline_bg01">
+            <span class="subtext01">
+                <p class="row">
+                    <span class="head_text">유효기간</span>
+                    <span class="sub_text"><%= expireDate %></span>
+                </p>
+                <p class="row">
+                    <span class="head_text">사용여부</span>
+                    <span class="sub_text"><%= state %></span>
+                </p>
+			</span>
+            <span class="subtext_line"></span>
+            <span class="subtext02">
+                <p class="row">
+                    <span class="head_text">할인가격</span>
+                    <span class="sub_text">
+                        <span class="num"><%= price %></span>
+                        <span class="kor">원</span>
+                    </span>
+                </p>
+			</span>           
+        </div>
+        <div class="bodyline_aa">유효기간 내 사용하지 않을 경우, 자동소멸 됩니다.</div>
+        <div class="area_btn">
+            <span class="bt_147 focus">확인</span> <!--unfocus or focus 중 택일-->   
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

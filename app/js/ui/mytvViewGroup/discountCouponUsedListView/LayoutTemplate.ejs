@@ -1,0 +1,110 @@
+<div id="mytv"><!-- mytv-->
+    <div class="title violet">할인권 사용내역</div>
+    <div class="second_tit">최근 발행된 할인권 내역입니다.</div>
+    <div class="second_tit2">할인권은 일반 결제시 자동 적용됩니다.</div>
+ 
+    <div class="list_wrap position_23"><!-- wrap-->
+       <table cellpadding="0" cellspacing="0" class="vodbox_list">
+            <colgroup>
+                <col width="20%">
+                <col width="45%">
+                <col width="15%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>발행</th>
+                    <th>내용</th>
+                    <th>가격</th>
+                    <th>사용여부</th>
+                </tr>
+            </thead>
+            <tbody> 
+<%
+
+var remainRow = model.getVVisibleSize();
+var useList = null;
+
+if(model.getData() != null && model.getData().length != 0)	{
+	useList = model.getData();
+	var focusedIndex = model.getVIndex();
+	var start = model.getVStartIndex();
+	var max = (useList.length < model.getVisibleVMax())?useList.length:model.getVisibleVMax();
+	var couponName = "";
+	var issueTime = "";
+	var state = "";
+    var vSize = 0;
+
+	for(var i = start; i < start+model.getVisibleVMax(); i++) {
+		if(useList[i])	{
+			couponName = useList[i].getCouponName().split(" ")[0];
+			if(useList[i].getIssueTime())	{
+				if (useList[i].getIssueTime().indexOf(" ") >= 0) {
+						issueTime = useList[i].getIssueTime().substring(0, useList[i].getIssueTime().indexOf(" "));
+				}
+			}
+			if(useList[i].getDiscountCouponState() == "001")	{
+				state = "미사용";
+			}
+			else if(useList[i].getDiscountCouponState() == "101")	{
+				state = "발행중";
+			}
+			else if(useList[i].getDiscountCouponState() == "201")	{
+				state = "사용";
+			}
+			else if(useList[i].getDiscountCouponState() == "301")	{
+				state = "기간만료";
+			}
+			var discountAmount = UIHelper.addThousandSeparatorCommas(useList[i].getDiscountAmount());
+
+        vSize++;
+ %>
+ 				<tr class="unfocus">
+                    <td class="cen"><%= DateHelper.getDateWeekString(issueTime) %></td>
+                    <td class="cen"><%= couponName %></td>
+                    <td class="right"><%= discountAmount %> 원</td>
+                    <td><%= state %></td>
+                </tr>           
+<%		}
+    }
+    remainRow -= vSize;
+
+
+	for(var i = 0; i < remainRow; i++) {
+%>
+<tr class="unfocus">
+    <td class="cen"></td>
+    <td class="cen"></td>
+    <td class="right"></td>
+    <td></td>
+</tr>
+<%
+    }
+}
+%>
+            </tbody>
+            </table>
+<%
+
+
+if(model.isListFetched() == true && (model.getData() == null || model.getData().length == 0))	{
+%>
+	<div class="nodata">
+      <div class="img"></div>
+      <div class="tex">할인권 이용내역이 없습니다.</div>
+    </div> 
+<%
+}
+%>
+
+          </div><!--//wrap-->
+    <div class="page position_39">
+        <%
+        if(useList != null && useList.length > 0)	{
+        %>
+        <div class="pagenum"><span class="now"><%= parseInt(model.getVStartIndex()+model.getVIndex())+1 %></span><span class="all">/<%= parseInt((useList.length)) %></span></div>
+        <div class="pagedown mgt5 unfocus"></div>
+        <%
+        }%>
+        </div>
+    </div><!-- //mytv-->

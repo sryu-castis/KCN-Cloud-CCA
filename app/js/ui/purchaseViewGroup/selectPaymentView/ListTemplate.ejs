@@ -1,0 +1,85 @@
+
+<%
+	var coupon = model.getCoupon();
+	var price = model.getProduct().getPrice();
+	var listPrice = model.getProduct().getListPrice();
+	var dicountedPrice = price;
+	var productPrice = UIHelper.getProductPriceWithVAT(model.getProduct().getPrice());
+	var couponPaymentTypeTail = UIHelper.getCouponPaymentTail(productPrice, model.getBalanceOfCoin());
+	var tvpointPaymentTypeTail = UIHelper.getTVPointPaymentTail(productPrice, model.getBalanceOfTVPoint());
+	var tvpointPaymentTypeTailClassName = model.getBalanceOfTVPoint() > 0 ? 'normal' : 'red';
+	if(coupon != null)	{
+		dicountedPrice = price - coupon.getDiscountAmount();
+	    dicountedPrice = (dicountedPrice < 0) ? 0 : dicountedPrice;
+	}
+	var paymentTypeList = model.getData();
+%>
+
+<span class="box"> <!--옵션 첫번째 항목: unfocus, focus, select 중 택일-->
+	<div class="head">일반결제</div>
+	<div class="body">
+		<p class="money">
+<%
+  if(coupon != null && dicountedPrice > 0) {
+%>
+			<span class="kor discount"><%= UIHelper.addThousandSeparatorCommas(price)%>원</span>
+<%
+	};
+%>
+			<span class="num"><%= UIHelper.addThousandSeparatorCommas(dicountedPrice)%></span>
+			<span class="kor">원</span>
+		</p>
+		<p class="tax">(부가세 별도)</p>
+	</div>
+<%
+	var sale = model.hasCoupon()?"sale":"";
+%>	
+	<div class="ribbon <%=sale%>"></div> <!-- 할인권 적용 리본배너 사용시, class에 sale 추가 입력-->
+</span><!--//옵션 첫번째 항목 끝-->
+<%
+	if(model.getHVisibleSize() > 1) {
+		for(var i=0; i<model.getHVisibleSize(); i++){
+        if(paymentTypeList[i]=="coupon"){
+%>
+		<span class="box"> <!--옵션 두번째 항목: unfocus, focus, select 중 택일-->
+			<div class="head">쿠폰결제</div>
+			<div class="body">
+				<p class="money">
+					<span class="num"><%= UIHelper.addThousandSeparatorCommas(price)%></span>
+					<span class="kor">원</span>
+				</p>
+				<p class="tax">(부가세 별도)</p>
+				<p class="info_01 normal"><%= couponPaymentTypeTail%></p><!--normal, red 중 택일-->
+				<p class="coupon_balance">
+					<span class="icon coupon"></span><!--coupon, point 중 택일-->
+					<span class="text"><%= UIHelper.addThousandSeparatorCommas(model.getBalanceOfCoin())%>원</span>
+				</p>
+			</div>
+			<div class="ribbon"></div> <!-- 할인권 적용 리본배너 사용시, class에 sale 추가 입력-->
+		</span><!--//옵션 두번째 항목 끝-->
+<%
+        }
+
+        if(paymentTypeList[i]=="point"){
+  %>
+		<span class="box tv unfocus"> <!--옵션 세번째 항목:unfocus, focus, select 중 택일-->
+			<div class="head">TV포인트</div>
+			<div class="body">
+				<p class="money">
+					<span class="num"><%= UIHelper.addThousandSeparatorCommas(price)%></span>
+					<span class="kor">P 차감</span>
+				</p>
+				<p class="tax">(부가세 별도)</p>
+				<p class="info_01 <%=tvpointPaymentTypeTailClassName%>"><%= tvpointPaymentTypeTail%></p><!--normal, red 중 택일-->
+				<p class="coupon_balance">
+					<span class="icon point"></span><!--coupon, point 중 택일-->
+					<span class="text"><%= UIHelper.addThousandSeparatorCommas(model.getBalanceOfTVPoint())%>P</span>
+				</p>
+			</div>
+			<div class="ribbon"></div> <!-- 할인권 적용 리본배너 사용시, class에 sale 추가 입력-->
+		</span><!--//옵션 세번째 항목 끝-->
+<%
+        } //if end
+		} //for end
+	}
+%>

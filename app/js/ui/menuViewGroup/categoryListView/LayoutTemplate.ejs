@@ -1,0 +1,34 @@
+<div id="main_bg"> <!--  전체 프레임 시작 -->
+
+    <div class="bg_left"><!-- bg_left ,  비활성bg인 경우 클래스: dim-->
+        <div class="tit_area"><!-- icon1~icon10-->
+            <%
+                var currentCategoryName, parentCategoryName = "";
+
+                if(model.getParentCategory()) {
+                    parentCategoryName = model.getParentCategory().getCategoryName();
+                }
+                if (model.getCurrentCategory()) {
+                    currentCategoryName = model.getCurrentCategory().getCategoryName();
+                }
+            %>
+            <div class="text_tit_s "><%= parentCategoryName%></div><!-- 미니 타이틀 없는 경우 클래스추가: hidden-->
+            <div class="text_tit"><%= currentCategoryName%></div>
+        </div>
+        <div class="bg_menu_list"><!--메뉴 리스트 시작-->
+            <ul class="menu_list">
+
+            </ul>
+            <div class="tx_dim"></div><!-- 아래방향 인디케이터 unfocus, focus 중 택일-->
+        </div><!--메뉴 리스트 끝 -->
+        <div class="arrow"></div><!-- 포커스일때 클래스: focus-->
+    </div><!-- bg_left -->
+
+    <div class="bg_right"><!-- bg_right (오른쪽 메인영역 전체)-->
+        <div class="area_coupon"></div>
+        <div class="subViewArea container1"></div>
+        <div class="subViewArea container2"></div>
+
+
+    </div><!-- bg_right -->
+</div> <!-- // 전체 프레임 끝 -->

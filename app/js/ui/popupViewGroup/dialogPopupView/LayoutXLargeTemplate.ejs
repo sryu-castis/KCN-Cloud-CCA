@@ -1,0 +1,54 @@
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--bg 시작 -->
+        <div class="title">
+            <%
+            if(model.getIconType() != null && model.getIconType() != '') {
+            %>
+            <span class="icon_tit <%= model.getIconType()%>"></span>
+            <%
+            }
+            %>
+            <span class="text"><%= model.getTitle()%></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+        <%
+        var headText = model.getHeadText();
+        if(headText != null) {
+            var headTextClass = model.getHeadTextClass();
+        %>
+        <div class="<%= headTextClass %>"><%= headText %></div >
+        <%
+        }
+
+        var subText = model.getSubText();
+        if(subText != null) {
+            var subTextClass = model.getSubTextClass();
+
+        %>
+        <div class="<%= subTextClass %>"><%= subText%></div>
+        <%
+        }
+
+        var subSubText = model.getSubSubText();
+        if(subSubText != null) {
+            var subSubTextClass = model.getSubSubTextClass();
+            %>
+            <div class="<%= subSubTextClass %>"><%= subSubText%></div>
+            <%
+        }
+
+        var buttonSize = model.getButtonGroup().getSize()
+        if(buttonSize > 0) {
+        %>
+        <div class="area_btn">
+            <%
+            for(var i = 0; i < buttonSize; i++) {
+            %>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%
+            }
+        }
+        %>
+        </div>
+    </div><!--bg 끝-->
+</div><!--//팝업 전체 끝-->

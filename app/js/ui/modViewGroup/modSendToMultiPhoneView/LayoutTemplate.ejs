@@ -1,0 +1,56 @@
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">스마트 폰 듣기</span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+        <%
+        var phoneList = model.getData();
+        %>
+        <div class="body_title05_bg">
+            <p class="aa">안드로이드폰, 아이폰으로 음악을 편하게 받아보세요.</p>
+            <p class="bb"><%=(phoneList.length-1)%>개의 등록된 스마트 폰이 있습니다. 전송 받을 스마트 폰 번호를 선택해주세요.<br>몽키3 앱으로 받기는 스마트 폰에 몽키3 앱이 설치되어야 이용 가능합니다.</p>
+        </div>
+        <%
+        var phone = null;
+        var radioFocus = "";
+        var phoneFocus = "";
+        var phoneNumber = "";
+
+        for(var i = 0; i < phoneList.length; i++) {
+            phone = phoneList[i];
+            radioFocus = (model.getSelectedPhoneIndex() == i) ? "focus": "unfocus";
+            if(i == model.getVIndex()) {
+                phoneFocus = "focus";
+            } else if ( i == phoneList.length-1){
+                phoneFocus = "unfocus";
+            } else {
+                phoneFocus = "";
+            }
+
+            if(i == phoneList.length-1) {
+                phoneNumber = UIHelper.addHyphenForMobileNumber(phone.getNumber());
+            } else {
+                phoneNumber = phone.getNumber();
+            }
+        %>
+        <div class="option_box_0<%=(i+1)%>">
+            <span class="radio <%=radioFocus%>"></span><!--focus, unfocus 중 택일 -->
+            <span class="option_text01">선택:</span>
+            <span class="option_phone02 <%=phoneFocus%>"><%=phoneNumber%></span>
+        </div>
+        <%
+        }
+        %>
+        <div class="bodyline_jj">전송 받을 스마트폰 번호를 입력해주세요.</div>
+        <div class="area_btn">
+            <%
+            for(var i = 0; i < model.getButtonGroup().getSize(); i++) {
+            %>
+            <span class="bt_126 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%
+            }
+            %>
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

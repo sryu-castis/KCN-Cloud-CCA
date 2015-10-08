@@ -1,0 +1,62 @@
+<div id="popup_large02"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text"><%= model.getPossessionCoupon().getEventName() %></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+<%
+		if(eventType=="101" || eventType=="102" 
+		|| eventType=="301" || eventType=="302" || eventType=="303" 
+		|| eventType=="401" || eventType=="402")	{
+			
+		}
+		else	{
+		//	return;
+		}
+        var headText = model.getPossessionCoupon().getCouponName();
+        var eventType = model.getPossessionCoupon().getEventType();
+        var accumulatedPrice = UIHelper.addThousandSeparatorCommas(model.getPossessionCoupon().getEventMoney());
+		var usedPrice =UIHelper.addThousandSeparatorCommas(model.getPossessionCoupon().getEventMoney()- model.getPossessionCoupon().getCouponBalance());
+		var expireDate = model.getPossessionCoupon().getCouponExpirationDate();
+		var balance = UIHelper.addThousandSeparatorCommas(model.getPossessionCoupon().getCouponBalance());
+		
+%>
+        <div class="body_title"><%= headText%></div>
+        <div class="headline_bg02">
+            <span class="subtext01">
+                <p class="row">
+                    <span class="head_text">적립금액</span>
+                    <span class="sub_text"><%= accumulatedPrice %>원</span>
+                </p>
+                <p class="row">
+                    <span class="head_text">사용금액</span>
+                    <span class="sub_text"><%= usedPrice %>원</span>
+                </p>
+                <p class="row">
+                    <span class="head_text">유효기간</span>
+                    <span class="sub_text"><%= expireDate %></span>                
+                </p>
+			</span>
+            <span class="subtext_line"></span>
+            <span class="subtext02">
+                <p class="row">
+                    <span class="head_text">잔여금액</span>
+                    <span class="sub_text">
+                        <span class="num"><%= balance %></span>
+                        <span class="kor">원</span>                    
+                    </span>                
+                </p>
+			</span>        
+        </div>
+<%
+	var substring = "유효기간 내 사용하지 않을 경우, 자동 소멸됩니다.";
+	if(eventType == "401" || eventType == "402")	{
+		substring = "매월 1일 자동으로 충전되며 적립액은 이월되지 않습니다.<br> 가입 및 해지 문의 : " + STBInfoManager.getNumberOfCallCenter();
+	}
+%>
+        <div class="bodyline_aa"><%=substring%></div>
+        <div class="area_btn">
+            <span class="bt_147 focus">확인</span> <!--unfocus or focus 중 택일-->   
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

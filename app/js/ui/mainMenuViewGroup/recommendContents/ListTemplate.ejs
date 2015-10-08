@@ -1,0 +1,25 @@
+<%
+var contentList = model.getData();
+var max = 5;
+
+for(var i = 0; i < max; i++) {
+    var contents = contentList ? contentList[i] : null;
+    var contentImage = contents ? contents.getImageFileName() : "";
+%>
+<ul class="poster po<%=i+1%> unfocus">
+    <li class="img"><img src="<%= contentImage %>" onerror='this.src="resources/images/no_img_default.png"'></li>
+</ul>
+<%
+}
+
+var promoWindow = model.getPromoWindow();
+var promoWindowImage = null;
+if(promoWindow)
+    promoWindowImage= promoWindow.getPosterImage();
+%>
+
+<ul class="eventposter unfocus">
+    <li class="img">
+        <img class="" src="<%= promoWindowImage %>" onerror='this.src="resources/images/poster_w.png"' width="228" height="166">
+    </li>
+</ul>

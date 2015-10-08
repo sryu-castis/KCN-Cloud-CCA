@@ -1,0 +1,39 @@
+<div id="mytv"><!-- mytv-->
+    <div class="title violet">스마트 폰 등록설정</div>
+    <div class="second_tit">스마트폰에서 채널, VOD, 리모컨 기능을 이용하실 수 있는 서비스 입니다. </br>사용방법 : 스마트폰 스토어에서 <씨앤앰 TV 가이드> 설치 후 아래 </br> '새 스마트폰 등록' 버튼을 눌러 셋톱박스와 연동하여 사용</div>
+
+    <div class="btn3 unfocus position_37">새 스마트폰 등록</div>
+ 
+    <div class="list_wrap position_36"><!-- wrap-->
+       <table cellpadding="0" cellspacing="0" class="vodbox_list">
+            <colgroup>
+               <col width="50%">
+               <col width="50%">
+            </colgroup>
+            <thead>
+            <tr>
+               <th>전화번호</th>
+               <th>등록일자</th>
+            </tr>
+            </thead>
+            <tbody> 
+                
+            </tbody>
+        </table>
+        <div class="postion bt2">
+            <%
+            var buttonSize = model.getButtonGroup().getSize()
+            if(buttonSize > 0) {
+            for(var i = 0; i < buttonSize; i++) {
+            %>
+            <span class="inbt unfocus mgl4"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <% }
+            }
+            %>
+        </div>
+    </div><!--//wrap-->
+    <div class="page position_39">
+        <div class="pagenum"><span class="now">10</span><span class="all">/10</span></div>
+        <div class="pagedown mgt5 unfocus"></div>
+        </div>
+</div><!-- //mytv-->

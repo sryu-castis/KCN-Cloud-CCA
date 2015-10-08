@@ -1,0 +1,21 @@
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">월정액 가입</span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+		<div class="headline_frame">
+		</div>
+
+        <div class="area_btn">
+<%
+	var buttonSize = model.getButtonGroup().getSize();
+    for(var i = 0; i < buttonSize; i++) {
+%>
+                <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+	}
+%>  
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

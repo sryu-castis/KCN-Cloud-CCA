@@ -1,0 +1,103 @@
+<%
+    var bundleProductList = model.getData();
+%>
+  <div class="vod"><!-- VOD포스터 영역-->
+  
+    <div class="poster_group mgt50"><!-- 1행 시작-->
+    <%
+        for(var index=0; index<4; index++) {
+            if(index >= bundleProductList.length) {
+                break;
+            };
+            var bundleProduct = bundleProductList[index];
+            var image = bundleProduct.getImageFileName();
+            var title = bundleProduct.getProductName();
+            var ribbon = "";
+            var price = UIHelper.addThousandSeparatorCommas(bundleProduct.getPrice());
+            // if(model.getViewType() == DefineView.bundleProductListView)	{
+            // 	var ribbon = UIHelper.getPosterRibbonNameForAsset(bundleProduct);
+            // }
+            // else	{
+            // 	var ribbon = UIHelper.getRankingIconClassName(model.getVStartIndex()*4+index);
+            // } 
+            // var genre = bundleProduct.getGenre();
+            // var runningTime = UIHelper.transformHourMinuteTimeToMinuteTime(bundleProduct.getRunningTime());
+            // var rating = UIHelper.getRatingName(bundleProduct.getRating());
+            // var director = bundleProduct.getDirector();
+            // var starring = bundleProduct.getStarring();
+    %>
+        <ul class="poster">
+            <li class="img"><img src='<%= image %>' onerror='this.src="resources/images/no_img_middle2.png"'></li>
+            <li class="ribbon <%= ribbon %>"></li>
+            <li class="tx1">
+    <%
+            for(var assetIndex=0; assetIndex<5; assetIndex++) {
+                var asset = bundleProduct.getBundleAssetList()[assetIndex];
+                if(asset == undefined) {
+                    break;
+                };
+                var title = asset.getDisplayName();
+    %>
+                <div><%= title %></div>
+    <%
+            };
+    %>                
+            </li>
+    <%
+            if(UIHelper.isPurchasedProduct(bundleProduct) == false) {
+    %>
+            <li class="price">묶음가격:<%= price %>원</li>
+    <%
+            } else {
+    %>
+            <li class="price">구매완료</li>
+    <%
+            }
+    %>
+        </ul>
+    <%
+        };
+    %>
+     </div>
+     
+     <div class="poster_group"><!-- 2행 시작-->
+     <%
+        for(var index=4; index<8; index++) {
+            if(index >= bundleProductList.length) {
+                break;
+            };
+            var bundleProduct = bundleProductList[index];
+            var image = bundleProduct.getImageFileName();
+            var title = bundleProduct.getProductName();
+            var ribbon = "";
+            // if(model.getViewType() == DefineView.bundleProductListView)	{
+            // 	var ribbon = UIHelper.getPosterRibbonNameForAsset(bundleProduct);
+            // }
+            // else	{
+            // 	var ribbon = UIHelper.getRankingIconClassName(model.getVStartIndex()*4+index);
+            // } 
+            // var genre = bundleProduct.getGenre();
+            // var runningTime = UIHelper.transformHourMinuteTimeToMinuteTime(bundleProduct.getRunningTime());
+            // var rating = UIHelper.getRatingName(bundleProduct.getRating());
+            // var director = bundleProduct.getDirector();
+            // var starring = bundleProduct.getStarring();
+     %>
+        <ul class="poster">
+            <li class="img"><img src= '<%= image %>' onerror='this.src="resources/images/no_img_middle2.png"' ></li>
+            <li class="text"><%= title %></li>
+            <li class="ribbon <%= ribbon %>"></li> 
+        </ul>
+    <%
+        };
+    %>    
+       </div>     
+     </div> <!--// VOD포스터 영역-->
+   <div class="dim unfocus"></div> 
+   <div class="scrollbg"><!--20150122스크롤바--> 
+       <div class="scroll"></div>
+     </div> 
+     
+   <div class="bt_bottom"><!-- bt_bottom -->
+      <span class="bt_yellow"></span>
+      <span class="bt_text">리스트보기</span>
+   </div><!-- //bt_bottom --> 

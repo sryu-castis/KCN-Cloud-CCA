@@ -1,0 +1,40 @@
+
+<% 
+	var wishItemList = model.getData();
+	var remainRow = model.getPageSize();
+	
+	if(wishItemList != null && wishItemList.length > 0)	{
+		for(var i = 0; i < wishItemList.length; i++) {
+			
+%>
+			<tr class="unfocus"><!--unfocus,focus,selected-->
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr><%= wishItemList[i].getAsset().getTitle() %></nobr></td>
+	            <td class="cen"><%= DateHelper.getDateWeekTimeString(wishItemList[i].getAddTime()) %></td> <!--12월 28일 (화) PM 23:59-->
+	        </tr>
+<%		
+		}
+		remainRow -= wishItemList.length;
+
+	
+		for(var i = 0; i < remainRow; i++) {
+%>
+		<tr class="unfocus"><!--unfocus,focus,selected-->
+			<td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+			<td class="cen"></td> <!--12월 28일 (화) PM 23:59-->
+		</tr>
+<%
+		}
+	}
+%>
+<%
+
+
+if(model.isListFetched() == true && (wishItemList == null || wishItemList.length == 0))	{
+%>
+	<div class="nodata">
+      <div class="img"></div>
+      <div class="tex">찜목록이 없습니다.</div>
+    </div> 
+<%
+}
+%>

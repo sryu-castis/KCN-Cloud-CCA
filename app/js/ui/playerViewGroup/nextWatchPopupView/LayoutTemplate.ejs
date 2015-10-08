@@ -1,0 +1,39 @@
+<div id="popup_large"> <!--팝업 전체 시작 -->
+<% if(model.getNextAsset() != null)	{
+%>
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">다음회:<%= model.getNextAsset().getTitle()%></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+
+        <div class="poster_nextview01">
+            <ul class="poster">
+<%
+            var ribbonName = UIHelper.getPosterRibbonNameForAsset(model.getNextAsset());
+            var imageURL = model.getNextAsset().getSmallImageFileName();
+%> 
+                <li class="img"><img src="<%= imageURL %>"></li>
+                <li class="ribbon <%= ribbonName%>"></li>   
+            </ul>
+        </div>
+        <div class="text_nextview01">
+            <p class="title"><%= model.getCurrentAsset().getTitle()%></p><!--20150127변경 -->
+            <p class="msg">프로그램이 종료되었습니다.</p><!--20150127변경 -->
+            <p class="body">다음 회를 시청하시려면<br> "다음 회 시청"을 선택해 주세요.</p>
+        </div>
+        <div class="area_btn">
+<%
+            var buttonSize = model.getButtonGroup().getSize();
+        	if(buttonSize > 0) {
+            	for(var i = 0; i < buttonSize; i++) {
+%>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+	            }
+	        }
+	}	        
+%>       
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

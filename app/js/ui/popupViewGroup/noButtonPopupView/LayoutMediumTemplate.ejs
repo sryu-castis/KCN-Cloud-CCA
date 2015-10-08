@@ -1,0 +1,56 @@
+<div id="popup_m"> <!--팝업 전체 시작 -->
+    <div class="bg"> <!--bg 시작 -->
+        <div class="title">
+        <%
+        if(model.getIconType() != null && model.getIconType() != '') {
+        %>
+            <span class="icon_tit <%= model.getIconType()%>"></span>
+        <%
+        }
+        %>
+            <span class="text"><%= model.getTitle()%></span>
+        </div>
+        <%
+        var lineReggie = /<br>/gi;
+        var headText = model.getHeadText();
+        var headRowCount = 0;
+        if(headText != null) {
+            var headTextClass = model.getHeadTextClass();
+            var headRow = "row0";
+            if (lineReggie.test(headText)) {
+                headRowCount = headText.match(lineReggie).length
+                headRow +=  (headRowCount + 1);
+            } else {
+                headRowCount = 1;
+                headRow += headRowCount;
+            }
+        }
+
+        var subText = model.getSubText();
+        var subRowCount = 0;
+        if(subText != null) {
+            var subTextClass = model.getSubTextClass();
+            var subRow = "row0";
+            if (lineReggie.test(subText)) {
+                subRowCount = subText.match(lineReggie).length;
+                subRow += (subRowCount + 1);
+            } else {
+                subRowCount = 1;
+                subRow += subRowCount;
+            }
+        }
+
+            if(headRowCount > 0) {
+        %>
+        <div class="<%= headTextClass %> <%= headRow %>"><%= headText %></div ><!--1줄일때 row01, 2줄일때 row02 -->
+        <%
+            }
+            if(subRowCount > 0) {
+        %>
+        <div class="<%= subTextClass %> <%= subRow %>"><%= subText%></div>
+        <%
+            }
+        %>
+        
+  </div><!--bg 끝-->
+</div><!--//팝업 전체 끝-->

@@ -1,0 +1,8 @@
+<%
+    var balanceOfCoin = UIHelper.addThousandSeparatorCommas(model.getBalanceOfCoin());
+    var countOfCoupon = UIHelper.addThousandSeparatorCommas(model.getCountOfCoupon());
+%>
+<span class="icon_coupon"></span>
+<p class="header_text"><%= balanceOfCoin%> 원</p>
+<span class="icon_sale"></span>
+<p class="header_text"><%= countOfCoupon%> 장</p>

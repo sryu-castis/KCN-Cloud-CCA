@@ -1,0 +1,33 @@
+<%
+    var vodList = model.getData();
+
+%>
+<% for (var row=0; row<3 && row*5<vodList.length; row++) { 
+    var topMarginClass = (row == 0) ? "mgt24" : "";
+%>
+  <div class="poster_group01 <%= topMarginClass %>"><!-- 1행 시작-->
+    <% for (var col=0; col<5 && row*5+col<vodList.length; col++) {
+          var item = vodList[row*5+col]; 
+          var imageUrl = item.getSmallImageFileName(); 
+          var title = item.getTitle();
+          var ribbonName = UIHelper.getPosterRibbonName(item);
+    %>
+      <ul class="poster">
+        <li class="img"><img src='<%= imageUrl %>' onerror='this.src="resources/images/no_img_middle.png"' /></li>
+        <li class="text"><%= title %></li>
+        <li class="ribbon <%= ribbonName %>"></li>    
+      </ul>
+    <% }; %>
+  </div><!-- 1행 끝-->
+<% }; %>
+<div><!-- //포스터 리스트 끝-->
+  <!-- <div class="topdim"></div> -->
+  <div class="dim unfocus"></div>
+  <div class="scrollbg" style="display: none;">
+      <div class="scroll top" style="position: relative;"></div>
+  </div>
+</div><!-- //bg_right -->
+<div class="bt_bottom"><!-- bt_bottom -->
+    <span class="bt_yellow"></span>
+    <span class="bt_text">리스트보기</span>
+</div><!-- //bt_bottom -->

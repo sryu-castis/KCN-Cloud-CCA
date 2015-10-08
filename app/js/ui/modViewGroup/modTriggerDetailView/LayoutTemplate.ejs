@@ -1,0 +1,69 @@
+<div id="popup_large"> <!--팝업 전체 시작 -->
+    <%
+    var extContentInfo = model.getExtContentInfo();
+    if(extContentInfo != null) {
+        var age = (extContentInfo.getAge() == "0")? "all": "a"+extContentInfo.getAge();
+    %>
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text"><%=extContentInfo.getTitle()%></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+        <div class="poster_nextview02">
+            <ul class="poster">
+                <li class="img"><img src="<%=extContentInfo.getImgUrl()%>" onerror='this.src="resources/images/no_img_middle.png"'></li>
+                <li class="ribbon"></li><!--hot,rank01,reco,movie,event,sale,coupon,fav,new,sale_sur,sale_package 중 택일-->
+            </ul>
+        </div>
+        <div class="text_nextview02">
+            <p class="path">
+                <span class="normal"></span>
+                <span class="emphasis"></span>
+            </p>
+            <p class="info01">
+                <span class="ex_date">시청기간</span>
+                <span class="emphasis"><%=extContentInfo.getValidDuration()%></span>
+                <span class="ex_age">시청가능연령</span>
+                <span class="icon_age <%=age%>"></span>
+            </p>
+            <p class="price">
+                <span class="normal">가격</span>
+                <span class="emphasis"><%=UIHelper.addThousandSeparatorCommas(extContentInfo.getPrice())%>원/월(부가세별도)</span>
+            </p>
+            <p class="genre">
+                <span class="normal">장르</span>
+                <span class="emphasis"><%=extContentInfo.getGenre()%></span>
+            </p>
+            <p class="artist">
+                <span class="normal">아티스트</span>
+                <span class="emphasis"><%=extContentInfo.getArtist()%></span>
+            </p>
+        </div>
+        <div class="story_navi"> <!--style="overflow:hidden;height:40px;"-->
+            <span class="page focus"></span>
+            <span class="page unfocus"></span>
+            <span class="page unfocus"></span>
+        </div>
+        <div class="story_area">
+            <span class="arw_left unfocus"></span>
+            <span class="story" style="overflow:hidden;height:40px;"><%=extContentInfo.getInfo()%></span>
+            <span class="arw_right unfocus"></span>
+        </div>
+    <%
+    } else {
+    %>
+    <div class="bg_top">
+    <%
+    }
+    %>
+        <div class="area_btn">
+            <%
+            for(var i = 0; i < model.getButtonGroup().getSize(); i++) {
+            %>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%
+            }
+            %>
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

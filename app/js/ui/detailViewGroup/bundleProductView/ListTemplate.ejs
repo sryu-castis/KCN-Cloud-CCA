@@ -1,0 +1,81 @@
+<%
+    var bundleProduct = model.getData();
+    var productName = bundleProduct.getProductName();
+    var purchaseEndTime = bundleProduct.getLicenseEnd().split(" ")[0];
+    var rentalPeriod = DateHelper.getRentalPeriod(bundleProduct.getRentalDuration(), bundleProduct.getRentalDurationUnit());
+    var rentalEndDate = DateHelper.getRentalEndDate(bundleProduct.getRentalDuration(), bundleProduct.getRentalDurationUnit());
+    var price = UIHelper.addThousandSeparatorCommas(bundleProduct.getPrice());
+    var suggestedPrice = UIHelper.addThousandSeparatorCommas(bundleProduct.getSuggestedPriceTotal());
+    var isPurchased = UIHelper.isPurchasedProduct(bundleProduct);
+%>
+    <div class="area_poster"><!-- 포스터 영역 시작 -->
+<%
+    var bundleAssetList = bundleProduct.getBundleAssetList();
+    for(var i=0; i<5; i++) {
+        if(i >= bundleAssetList.length) {
+            break;
+        };
+
+        var bundleAsset = bundleAssetList[i];
+        var title = bundleAsset.getDisplayName();
+        // var ribbon = UIHelper.getPosterRibbonNameForAsset(bundleAsset);
+        var ribbon = "";
+        var image = bundleAsset.getImageFileName();
+        var hd = bundleAsset.getHDContent() ? "hd" : "sd";
+        var assetPrice = UIHelper.addThousandSeparatorCommas(bundleAsset.getSuggestedPrice());
+%>
+       <ul class="poster">
+            <li class="img"><img src="<%= image %>" onerror='this.src="resources/images/no_img_middle.png"'/></li> 
+            <li class="text"><%= title %></li>
+            <li class="ribbon <%= ribbon %>"></li>
+<%
+        if(isPurchased == false) {
+%>
+            <li class="icon <%= hd %>"></li>
+            <li class="price"><%= assetPrice %>원</li>    
+<%
+        };
+%>
+        </ul>
+<%
+    };
+%>
+      </div><!-- 포스터 영역 끝 -->
+      <div class="info">
+        <span class="duration">
+          <div class="tx1">구매기간<br>시청기간</div>
+<%
+    if(isPurchased == true) {
+%>
+          <div class="tx2"><%= purchaseEndTime %> 까지<br>구매후 <%= rentalPeriod %></div>
+<%
+    } else {
+%>
+          <div class="tx2"><%= purchaseEndTime %> 까지<br><%= rentalEndDate %> (<%= rentalPeriod %>간)</div>
+<% 
+    };
+%>
+        </span>
+        <span class="line"></span>
+        <span class="price">
+          <div class="tx">묶음가격</div>
+<%  
+    if(isPurchased == false) {
+%>
+          <div class="p_1 roll"><%= suggestedPrice %> 원</div>
+          <div class="p_2"><span><%= price %></span> 원(부가세 별도)</div>
+<%
+    } else {
+%>
+          <div class="p_2">이미 구매하셨습니다.</div>
+<%
+    }
+%>
+        </span>
+      </div>
+    <div class="btn_align">
+        <span class="bt_147 unfocus">구매</span> 
+        <span class="bt_147 unfocus">취소</span>        
+    </div>
+    <div class="text_align">[HD] CONTENTA 시청을 원하시면 리모컨의 <span>"OK"</span> 버튼을 눌러주세요.      
+    </div>

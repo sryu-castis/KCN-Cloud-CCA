@@ -1,0 +1,85 @@
+<%
+    var vodList = model.getData();
+    
+    var totalPage = model.totalPage;
+    var currentPage = Math.ceil(model.getVStartIndex() / model.getVVisibleSize()) + 1;
+    
+    var leftColumnCount = Math.ceil(vodList.length / model.getHVisibleSize());
+    var rightColumnCount = (vodList.length % 2 == 0) ? leftColumnCount : leftColumnCount - 1;
+    var leftColumnStartIndex = 0;
+    var rightColumnStartIndex = 1;
+%>
+<div class="mainarea_text">
+    <div class="list_group01"><!--메뉴 리스트 시작--> 
+        <% for(var row=0; row<leftColumnCount; row++) {
+            var index = leftColumnStartIndex + row*2;
+            if(index + 1 > vodList.length) {
+                break;
+            };
+            var item = vodList[index];
+            var title = item.getTitle();
+            var ribbon = UIHelper.getPosterRibbonName(item); %>
+        <ul class="list">
+            <span class="blit"></span>
+            <span class="text"><%= title %></span>
+            <span class="icon <%= ribbon %>"></span>     
+        </ul>
+        <%
+            }
+        %>
+    </div><!--메뉴 리스트 끝 --> 
+    <div class="list_partline"></div>
+    <div class="list_group01"><!--메뉴 리스트 시작--> 
+        <% for(var row=0; row<rightColumnCount; row++) {
+            var index = rightColumnStartIndex + row*2;
+            if(index + 1 > vodList.length) {
+                break;
+            }
+            var item = vodList[index];
+            var title = item.getTitle();
+            var ribbon = UIHelper.getPosterRibbonName(item); %>
+        <ul class="list">
+            <span class="blit"></span>
+            <span class="text"><%= title %></span>
+            <span class="icon <%= ribbon %>"></span>     
+        </ul>
+        <%
+            }
+        %>
+    </div><!--메뉴 리스트 끝 --> 
+</div>
+<div class="mainarea_poster">
+    <%  
+        var selectedItem = vodList[selectedItemIndex];
+        var image = selectedItem.getSmallImageFileName();
+        var ribbon = UIHelper.getPosterRibbonName(selectedItem);
+        var title = selectedItem.getTitle();
+        var genre = selectedItem.getGenre();
+        var runningTime = UIHelper.transformHourMinuteTimeToMinuteTime(selectedItem.getRunningTime());
+        var rating = UIHelper.getRatingName(UIHelper.getNormalizationRating(selectedItem.getRating()));
+        var director = selectedItem.getDirector();
+        var starring = selectedItem.getStarring();
+    %>
+    <div class="poster"><img src="<%= image %>" onerror='this.src="resources/images/no_img.png"' /></div>
+    <div class="poster_ribbon <%= ribbon %>"></div>
+    <div class="poster_text_head"><%= title %></div>
+    <div class="poster_text_info01">
+        <span class="genre"><%= genre %></span>
+        <span class="point">•</span>
+        <span class="time"><%= runningTime %>분</span>
+        <span class="point">•</span>
+        <span class="age icon mgt_2 <%= rating %>"></span>
+    </div>
+    <div class="poster_text_info02">감독:<%= director %></div>
+    <div class="poster_text_info03"><%= starring %></div>
+    <%
+        if(selectedItem.getPromotionCopy != undefined) {
+            var promotionCopy = selectedItem.getPromotionCopy();
+    %>
+    
+    <div class="poster_text_info04"><%= promotionCopy %></div>
+    <%
+        };
+    %>
+</div>
+<div class="mainarea_arw unfocus"></div>

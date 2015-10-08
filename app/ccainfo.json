@@ -1,0 +1,26 @@
+{
+    "Version": "1.7.3",
+    "QRVersion": "QR1",
+    "LogMode": "on",
+    "DevelopmentMode": "on",
+    "HAS": {
+        "IP": "192.168.40.5",
+        "PORT": "8080"
+    },
+    "CUPS":{
+        "IP":"192.168.40.5",
+        "PORT":"3001"
+    },
+    "Weather" : {
+        "IP": "1.234.67.10",
+        "PORT": "80"
+    },
+    "MDCategoryID": "713229",
+    "ChartCategoryId": "713230",
+    "CouponShopCategoryID":"714175",
+    "MovieCategoryID":"27282",
+    "TVCategoryID":"27279",
+    "NotifyStartDelayTime":3,
+    "UseBlockToEnterKeyRepetition":"off",
+    "RepetitionEnterKeyBlockTime":500
+}

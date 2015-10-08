@@ -1,0 +1,25 @@
+ <div class="title">
+    <span class="icon_tdy"></span>
+    <span class="text_main">오늘의<span class="text_sub">VOD</span></span>
+</div>
+<div class="title_underline"></div>
+ <%
+ 		var assetList = model.getAssetList();
+ 		if(assetList == undefined)	{
+ 			return;
+ 		}
+
+        for(var i=0; i<assetList.length; i++) {
+            var asset = assetList[i];
+            var image = asset.getSmallImageFileName();
+            var title = asset.getTitle();
+            var ribbon = UIHelper.getPosterRibbonNameForAsset(asset); //TODO change to rank
+%>
+<div class="poster_ea0<%= i+1 %>"><!-- 포스터 1행 1열 -->
+    <p class="poster"><img src="<%= image %>" onerror='this.src="resources/images/no_img_middle.png"'/></p>
+    <p class="poster_ribbon <%= ribbon %>"></p>
+    <p class="poster_text_head"><%= title %></p>
+</div>
+<%
+    };
+%>

@@ -1,0 +1,25 @@
+<div id="password">
+    <div class="title violet"><%= model.getTitleText()%></div>
+    <div class="second_tit"><%= model.getTitleText()%>이 필요한 기능입니다.</div>
+    <div class="text_password"><%= model.getInputField().getDefaultText()%></div>
+    <div class="txfld">
+        <ul class="num_pin">
+            <%
+                var passwordLength = model.getInputField().getSize();
+                for(var i = 0; i < passwordLength; i++) { %>
+                    <li class="pin"></li>
+            <%  } %>
+        </ul>
+    </div>
+    <div class="button">
+        <%
+            var buttonSize = model.getButtonGroup().getSize()
+            if(buttonSize > 0) {
+                for(var i = 0; i < buttonSize; i++) {
+        %>
+                    <div class="btn2 mgr11"><%= model.getButtonGroup().getButton(i).getLabel() %></div>
+            <% }
+            }
+        %>
+    </div>
+</div>

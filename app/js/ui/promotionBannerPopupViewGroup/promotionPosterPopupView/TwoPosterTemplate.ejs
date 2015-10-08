@@ -1,0 +1,30 @@
+<div class="area_content2">
+    <span class="arr left focus position01"></span>
+
+    <div class="area_poster">
+        <%
+        var promoWindow = model.getData();
+        for(var i = 0; i < 2; i++) {
+            var image = null;
+            var text = null;
+            if (promoWindow.getPromoWindowPosterList()[i]) {
+                image = promoWindow.getPromoWindowPosterList()[i].getImage();
+                text = promoWindow.getPromoWindowPosterList()[i].getTitle();
+            }
+        %>
+                <ul class="poster p<%= i+1 %> unfocus">
+                    <li class="img"><img src="<%= image %>" onerror='this.src="resources/images/no_img_default.png"'></li>
+                    <li class="text"><%= text%></li>
+                    <li class="ribbon"></li>
+                </ul>
+        <%
+            }
+        %>
+    </div>
+    <span class="arr right unfocus position03"></span>
+
+    <div class="area_text2">
+        <div class="text">
+        </div>
+    </div>
+</div>

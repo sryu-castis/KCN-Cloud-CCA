@@ -1,0 +1,33 @@
+<%
+    var contentGroupList = model.getData();
+    if(contentGroupList == null || contentGroupList == undefined || contentGroupList.length == 0) {
+        var message = CCABase.StringSources.noData[310]; //ViewerType.RECOMMEND
+%>
+    <div class="nodata">
+        <div class="img"></div>
+        <div class="tex"><%= message %></div>
+    </div>
+
+<%
+    } else {
+
+        for(var i = 0 ; i < contentGroupList.length; i++) {
+            var contentGroup = contentGroupList[i]
+            var riboonName = UIHelper.getPosterRibbonName(contentGroup);
+            var imageURL = contentGroup.getSmallImageFileName();
+            %>
+            <ul class="poster">
+                <li class="img"><img src= '<%= imageURL %>' onerror='this.src="resources/images/no_img_small.png"'/></li>
+                <li class="ribbon <%= riboonName%>"></li>
+            </ul>
+<%
+        }
+        %>
+        <ul class="more">
+            <li class="img"><!--img src="../../images/ " /--></li>
+            <li class="ribbon reco"></li>
+        </ul>
+<%
+    }
+
+%>

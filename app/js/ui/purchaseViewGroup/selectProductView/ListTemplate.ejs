@@ -1,0 +1,40 @@
+<%
+
+	for(var i = 0; i < model.getData().length; i++) {
+		var product = model.getData()[i];
+		var coupon = model.getCoupon();
+		var price = product.getPrice();
+		var dicountedPrice = price;
+		if(coupon != null && product.getProductType() == "RVOD")	{
+			dicountedPrice = product.getPrice() - coupon.getDiscountAmount();
+		    dicountedPrice = (dicountedPrice < 0) ? 0 : dicountedPrice;
+		}
+%>
+		<span class="box"> <!--옵션 첫번째 항목: unfocus, focus, select 중 택일-->
+			<div class="head"><%= UIHelper.getPurchaseProductHead(product)%></div>
+			<div class="body">
+				<p class="info_02 normal"><%= UIHelper.getPurchaseProductBody(product)%>
+					<p class="money">
+<%
+  if(coupon != null && dicountedPrice > 0 && UIHelper.getPurchaseProductHead(product) == "단편구매") {
+%>
+						<span class="kor discount"><%= UIHelper.addThousandSeparatorCommas(price) %>원</span><!--할인금액에 discount 입력-->
+<%
+	};
+%>						
+						<span class="num"><%= UIHelper.addThousandSeparatorCommas(dicountedPrice)%></span>
+						<span class="kor">
+                            원<% if (product.getProductType() == "SVOD") {%>/월<% } %>
+                        </span>
+					</p>
+
+					<p class="tax">(부가세 별도)</p>
+				</div>
+<%
+	var sale = (model.hasCoupon() && product.getProductType() == "RVOD")?"sale":"";
+%>	
+	<div class="ribbon <%=sale%>"></div> <!-- 할인권 적용 리본배너 사용시, class에 sale 추가 입력-->
+		</span><!--//옵션 첫번째 항목 끝-->
+<%
+	}
+%>

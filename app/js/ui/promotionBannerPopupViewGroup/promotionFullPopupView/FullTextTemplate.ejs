@@ -1,0 +1,21 @@
+<div class="area_text">
+    <%
+        var promoWindow = model.getData();
+        var text = null;
+        if(promoWindow.getPromoWindowPosterList()[0]){
+            text = promoWindow.getPromoWindowPosterList()[0].getDesc();
+        }
+    %>
+    <div class="text">
+       <%= text %>
+    </div>
+
+    <div class="scroll">
+        <div class="bar"></div>
+    </div>
+    <div class="page">
+        <span class="now">1</span>
+        <span class="slash"></span>
+        <span class="all">10</span>
+    </div>
+</div>

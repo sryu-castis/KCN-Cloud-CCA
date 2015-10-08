@@ -1,0 +1,43 @@
+<div id="mytv"><!-- mytv-->
+    <div class="title violet">VOD 시청목록</div>
+    <div class="second_tit">최근 VOD 시청내역입니다.</div>
+    <div class="second_tit2">시청 콘텐츠를 선택하여 다시 시청 또는 다시 구매 하실 수 있습니다.</div>
+ 
+    <div class="list_wrap position_23"><!-- wrap-->
+       <table cellpadding="0" cellspacing="0" class="vodbox_list">
+            <colgroup>
+                <col width="70%">
+                <col width="30%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>시청목록</th>
+                    <th>시청날짜</th>
+                </tr>
+            </thead>
+            <tbody> 
+            </tbody>
+            </table>
+
+            <div class="postion bt1"><!--레이어버튼 : bt1~6 선택된 행 순서에 따라 정해짐. 1행이 selected 인경우 bt1-->
+	          <!--span class="inbt focus">시청</span>
+	          <span class="inbt unfocus mgl4">삭제</span>
+	          <span class="inbt unfocus mgl4">닫기</span-->
+	          
+	        <%
+	            var buttonSize = model.getButtonGroup().getSize()
+	            if(buttonSize > 0) {
+	                for(var i = 0; i < buttonSize; i++) {
+	        %>
+	                    <span class="inbt unfocus mgl4"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+	            <% }
+	            }
+	        %>
+	          
+	        </div>
+          </div><!--//wrap-->
+    <div class="page position_39">
+        <div class="pagenum"><span class="now">10</span><span class="all">/10</span></div>
+        <div class="pagedown mgt5 unfocus"></div>
+        </div>
+      </div><!-- //mytv-->  

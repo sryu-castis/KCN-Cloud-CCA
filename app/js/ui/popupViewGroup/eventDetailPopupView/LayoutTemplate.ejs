@@ -1,0 +1,52 @@
+<%
+    var event = model.getData();
+    var title = event.getEventTitle();
+    var image1 = event.getImageFileName1();
+    var description = event.getDescription();
+    var prize = event.getPrize();
+    var howToEnroll = event.getHowToEnroll();
+    var startTime = event.getEventCreationTime().split(" ")[0].replace(/-/g,".");
+    var endTime = event.getEndTime().split(" ")[0].replace(/-/g,".");
+    var draw = event.getDrawTime();
+    var image2 = event.getImageFileName2();
+%>
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text"><%= title %></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+
+        <div class="poster_infoview01">
+            <ul class="poster">
+                <li class="img"><img src=<%= image1 %>></li>
+            </ul>
+        </div>
+        <div class="text_infoview01"><%= description %></div>
+        <div class="text_infoview02">
+            <p class="info">
+                <span class="head">경&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;품</span>
+                <span class="body"><%= prize %></span>          
+            </p>
+            <p class="info">
+                <span class="head">응모방법</span>
+                <span class="body"><%= howToEnroll %></span>          
+            </p>
+            <p class="info">
+                <span class="head">응모기간</span>
+                <span class="body"><%= startTime + " ~ " + endTime %></span>          
+            </p>
+            <p class="info">
+                <span class="head">당첨발표</span>
+                <span class="body"><%= draw %></span>          
+            </p>
+        </div>
+        <div class="bodyline_kk">
+            <span class="img"><img src=<%= image2 %>></span>
+        </div>
+        <div class="area_btn">
+            <span class="bt_147 focus">확인</span> <!--unfocus or focus 중 택일-->
+            <span class="bt_147 unfocus">취소</span> <!--unfocus or focus 중 택일-->     
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div>

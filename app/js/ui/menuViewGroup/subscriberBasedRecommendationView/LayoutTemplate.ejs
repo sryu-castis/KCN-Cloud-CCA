@@ -1,0 +1,16 @@
+<%
+	var type = model.getViewType() == DefineView.BUNDLE_LIST_VIEW ? "product_pack" : "mania_reco";
+	if(type == "mania_reco") {
+%>
+  <div class="info_text"><span class="bold">0</span><span class="normal">건의 VOD가 있습니다.</span></div>
+<%
+	} else {
+%>
+<div class="info_text_e"></div>
+<%
+
+    }
+%>
+
+  <div id="<%= type %>"><!-- 마니아추천 시작-->
+  </div><!-- //마니아 추천 끝-->  

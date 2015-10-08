@@ -1,0 +1,42 @@
+<%
+    var balanceOfCoin = UIHelper.addThousandSeparatorCommas(model.getBalanceOfCoin());
+    var countOfCoupon = UIHelper.addThousandSeparatorCommas(model.getCountOfCoupon());
+%>
+<div id="ranking_search"> <!--  전체 프레임 시작 -->
+<div class="bg"> <!--  bg 시작 -->
+<div class="area_search">
+    <span class="icon_search"></span>
+    <span class="text_search">검색</span>
+    <span class="bar_search focus">
+        <span class="text default">OK 버튼을 누른 후 검색어를 입력하거나 아래 목록에서 선택해 주세요.</span>
+    </span>
+    <span class="coupon_search">
+        <p class="row01">
+            <span class="icon_sale"></span>
+            <span class="text_coupon"><%= countOfCoupon%>장</span>
+        </p>
+        <p class="row02">
+            <span class="icon_coupon"></span>
+            <span class="text_coupon"><%= balanceOfCoin%>원</span>
+        </p>
+    </span>
+</div>
+<div class="bg_highlight"></div>
+<div class="area_ranking">
+    <span class="left"></span>
+    <span class="center">
+    <div class="mainarea_text_01 unfocus"><!--  mainarea_text_01 시작 -->
+    </div><!--  //mainarea_text_01 끝 -->   
+    <div class="mainarea_horline"></div>   
+    <div class="mainarea_text_02 unfocus"><!--  mainarea_text_02 시작 -->
+    </div><!--  //mainarea_text_02 끝 -->
+    </span>
+    <span class="right">
+    <div class="mainarea_poster"><!-- mainarea_poster시작 -->
+         
+    </div><!--  //mainarea_poster 끝 -->
+    </span>
+</div>
+<div class="keypad" style='display: none;'></div>
+</div><!--  //bg 끝-->
+</div>

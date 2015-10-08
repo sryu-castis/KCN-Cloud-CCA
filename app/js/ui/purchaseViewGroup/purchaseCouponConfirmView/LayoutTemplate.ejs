@@ -1,0 +1,56 @@
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">쿠폰 구매</span>
+        </div>
+		<div class="tit_line"></div><!--20150622 추가 -->
+<%
+if(model.getData() != null)	{
+		var couponList = model.getData();
+		for(var i = 0; i < couponList.length; i++) {
+			var couponProductPrice = UIHelper.addThousandSeparatorCommas(couponList[i].getCouponProductPrice());
+			var chargeAmount = UIHelper.addThousandSeparatorCommas(couponList[i].getChargeAmount()); 
+%>
+		<div class="bg01_position0<%=i+1%> coupon_bg01 unfocus"><!--쿠폰 unfocus, focus중 택일-->
+	        <div class="percent">+<%= couponList[i].getDiscountRate() %>%</div>
+	        <div class="price"><%= couponProductPrice %></div>
+	        <div class="info">(<%= chargeAmount %>원 적립)</div>
+	    </div>
+<%	
+		} 
+
+%>
+
+        <div class="bodyline_ee">유효기간은 구매일로부터 12개월 입니다.<br>구매하시겠습니까?</div>
+<%        
+	var subSpanText = model.getInputField().getDefaultText();
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass();
+%>
+		<div class="bodyline_bb <%=textType%>"><%=subSpanText%></div>
+<%
+	}
+%>  
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+<%
+	var passwordLength = model.getInputField().getSize();
+	for(var i = 0; i < passwordLength; i++) { 
+%>
+			    <span class="num01 after"></span>
+<%  
+	} 
+%>
+        </div>
+        <div class="area_btn">
+<%
+	var buttonSize = model.getButtonGroup().getSize();
+    for(var i = 0; i < buttonSize; i++) {
+%>
+                <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+	}
+}
+%>
+        </div>
+	</div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

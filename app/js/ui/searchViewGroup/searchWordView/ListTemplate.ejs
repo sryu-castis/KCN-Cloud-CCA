@@ -1,0 +1,9 @@
+<%
+	var wordList = model.getData();
+	for(var index = 0; index < wordList.length; index++) {
+		var word = wordList[index];
+%>
+	<li><%= word %></li>
+<%
+	};
+%>

@@ -1,0 +1,46 @@
+<div id="popup_m"> <!--팝업 전체 시작 -->
+    <div class="bg"> <!--bg시작 -->
+        <div class="title">
+            <span class="icon_tit <%= model.getIconType() %>"></span><!-- check, won, del, note, clock, arrow, action, adult, plus, point, lock, 행 삭제(텍스트만 있을경우 사용하지 않음.) 중 택일-->
+            <span class="text"><%= model.getTitle() %></span>
+        </div>
+        <div class="body_headtext_confirm01 row01"><%= model.getHeadText() %></div ><!--1줄일때 row01, 2줄일때 row2 -->
+<%        
+	var subText = model.getSubText();
+	var subSpanText = model.getInputField().getDefaultText();
+	var subRow = "row01";
+	if(subSpanText != null && subSpanText != "")	{
+    	subRow = "row02";
+	} 
+%>       
+        <div class="body_subtext_confirm01 <%=subRow%>"><%= subText %>
+<%        
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass(); // impact or error
+%>
+        <span class="<%=textType%>"><%=subSpanText%></span>
+<%
+	}
+%>        
+        </div><!--1줄일때 row01, 2줄일때 row2 -->
+        <div class="body_serialbox_confirm01 unfocus"><!-- focus, unfocus 중 택일-->
+        <%
+			var passwordLength = model.getInputField().getSize();
+			for(var i = 0; i < passwordLength; i++) { %>
+			    <span class="num01 after"></span>
+		    <%  } %>
+        </div>
+        <div class="area_btn">
+<%
+			var buttonSize = model.getButtonGroup().getSize();
+        	if(buttonSize > 0) {
+            	for(var i = 0; i < buttonSize; i++) {
+%>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+				}
+            }
+%>
+        </div>
+  </div><!--bg_center 끝-->
+</div><!--//팝업 전체 끝-->

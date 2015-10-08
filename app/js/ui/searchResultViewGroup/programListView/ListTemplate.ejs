@@ -1,0 +1,62 @@
+<%
+    var programList = model.getData();
+    var vStartIndex = model.getVStartIndex();
+    var currentIndex = model.getVIndex() + vStartIndex + 1;
+    currentIndex = (programList == undefined || programList.length == 0) ? 0 : currentIndex;
+    var totalCount = programList.length;
+    totalCount = (programList == undefined) ? 0 : totalCount;
+    var vIndex = model.getVIndex();
+%>
+        <div class="area_list">
+<%
+    
+    for(var i=0; i<7; i++) {
+        var program = programList[i + vStartIndex];
+        if(program == undefined) {
+            break;
+        };
+        var channelNumber = program.getChannelNumber();
+        var channelName = program.getChannelName();
+        var title = program.getTitle();
+        var splitedStartTime = program.getBeginDate().split(" ")[1].split(":");
+        var startTime = splitedStartTime[0] + ":" + splitedStartTime[1];
+        var splitedEndTime = program.getEndDate().split(" ")[1].split(":");
+        var endTime = splitedEndTime[0] + ":" + splitedEndTime[1];
+        var hd = program.getHD() == 'HD' ? "icon_hd" : "";
+        var rating = UIHelper.getRatingName(UIHelper.getNormalizationRating(program.getRating()));
+%>
+          <ul class="list unfocus"><!-- 1행 시작-->
+          	<span class="channel_num"><%= channelNumber %></span>
+            <span class="channel_logo"><%= channelName %></span>
+            <span class="area_channel_title">
+                <p class="channel_title"><%= title %></p>
+                <p class="progress">
+                    <span class="time_tx text">방영시간</span>
+                    <span class="time_start text"><%= startTime %></span>
+                    <span class="time_tx text">~</span>
+                    <span class="time_end text"><%= endTime %></span>
+                    <span class="time_start graph"><%= startTime %></span>
+                    <span class="bg_bar graph"></span>
+                    <span class="bg_bar_focus graph"></span> <!-- 프로그래스바 상태 너비 조절-->
+                    <span class="time_end graph"><%= endTime %></span>
+                </p>
+            </span>
+            <span class="area_info_icon">
+            	<p class="icon_cast"></p>
+                <p>
+                    <span class="icon_age <%= rating %>"></span>
+                    <span class="<%= hd %>"></span>
+                </p>
+            </span>
+          </ul><!-- //1행 끝-->
+<%
+    };
+%>
+      </div>
+      <div class="area_page">
+          <p class="page">
+              <span class="now"><%= currentIndex %></span>
+              <span class="all">/<%= totalCount %></span>
+          </p>
+          <p class="arw_down"></p>
+      </div>

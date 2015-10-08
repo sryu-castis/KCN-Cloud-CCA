@@ -1,0 +1,44 @@
+<div id="popup_large"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">상품 가입해지</span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+
+        <div class="headline_bg03">
+        	<p class="head_slogan04"><%= model.getHeadText()%></p>
+            <p class="head_slogan05">
+                VOD가 포함된 상품인 경우,
+                <br>
+                VOD 요금 분은 한달 요금이 청구됩니다.
+            </p>
+            <p class="head_slogan06">해지 하시겠습니까?</p>
+        </div>
+        <div class="bodyline_bb <%=model.getBodyLineClass()%>"><%= model.getInputField().getDefaultText()%></div>
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+         	 <%
+			var passwordLength = model.getInputField().getSize();
+			for(var i = 0; i < passwordLength; i++) { %>
+			    <span class="num01 after"></span>
+		    <%  } %>
+        </div>
+        <%
+
+        var buttonSize = model.getButtonGroup().getSize()
+        if(buttonSize > 0) {
+            var ea = (buttonSize > 1) ? "ea02": "ea01";
+        %>
+
+        <div class="area_btn <%= ea%>"><!--버튼 2개일때 ea02, 1개일때 ea01-->
+        <%
+
+            for(var i = 0; i < buttonSize; i++) {
+        %>
+                <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+        <%
+            }
+        }
+        %>
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

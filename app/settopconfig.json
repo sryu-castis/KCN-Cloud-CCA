@@ -1,0 +1,18 @@
+{
+  "LSC230-8DCMSK" :{
+    "CategoryKeyBlockTime":700,
+    "EpisodeListKeyBlockTime":700
+  },
+  "LSC530-8DCM" :{
+    "CategoryKeyBlockTime":700,
+    "EpisodeListKeyBlockTime":700
+  },
+  "HD LSC-230" :{
+    "CategoryKeyBlockTime":800,
+    "EpisodeListKeyBlockTime":800
+  },
+  "default":{
+    "CategoryKeyBlockTime":700,
+    "EpisodeListKeyBlockTime":700
+  }
+}

@@ -1,0 +1,18 @@
+<li class="btup focus">
+</li>
+<%
+    var episodePeerList = model.getData();
+    var max = model.getVVisibleSize();
+
+    for(var i = 0; i < max; i ++) {
+        var episodeNumber = "";
+        if(episodePeerList != null && episodePeerList[i + model.getVStartIndex()] != null) {
+            episodeNumber = episodePeerList[i + model.getVStartIndex()].getSeriesIndex();
+        }%>
+        <li class="num unfocus"><%= episodeNumber%>
+        </li>
+<%
+    }
+%>
+<li class="btdown focus">
+</li>

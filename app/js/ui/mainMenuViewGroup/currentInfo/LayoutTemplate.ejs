@@ -1,0 +1,29 @@
+<%
+    var weatherInfo = model.getData();
+    var stationName = WeatherHelper.getDisplayNameBySOCode(STBInfoManager.getSOCode());
+    var currentTemperature = UIHelper.getTemperature(weatherInfo.getCurrentTemperature());
+    var maxTemperature = UIHelper.getTemperature(weatherInfo.getMaxTemperature());
+    var minTemperature = UIHelper.getTemperature(weatherInfo.getMinTemperature());
+%>
+
+<span class="banner size2"><img class="" src=""></span>
+<span class="weather">
+    <span class="gr_date">
+      <div class="time">
+          <span class="min"></span> <span class="ap"></span>
+      </div>
+      <div class="day"></div>
+    </span>
+    <span class="weatherWithBar">
+        <span class="bar"></span>
+        <span class="weath default"></span>
+        <span class="gr_temper">
+          <div class="local"><%= stationName %></div>
+          <div class="tem"><%= currentTemperature %>℃</div>
+        </span>
+        <span class="topbot">
+          <div class="top">최고 <span><%= maxTemperature %> ℃</span></div>
+          <div class="bot">최저 <span><%= minTemperature %> ℃</span></div>
+        </span>
+    </span>
+</span>

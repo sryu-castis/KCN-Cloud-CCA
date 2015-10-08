@@ -1,0 +1,47 @@
+<div id="mytv"><!-- mytv-->
+    <div class="title violet">쿠폰 요금제</div>
+    <div class="second_tit">매월 자동 결제되는 월정액 상품입니다.</div>
+    <div class="second_tit2">요금제에 가입하시면 보너스를 추가로 적립해 드립니다.(부가세 별도)</div>
+
+  <div class="box_area2"><!-- 쿠폰-->
+   
+   <% 
+	
+	//if(model.getData() != null)	{
+		var couponList = (model.getData() == null)?null:model.getData();
+		for(var i = 0; i < 3; i++) {
+			var discountRate = (couponList == null)?"":couponList[i].getDiscountRate();
+			var couponProductName = (couponList == null)?"":couponList[i].getCouponProductName();
+			var couponProductPrice = (couponList == null)?"":UIHelper.addThousandSeparatorCommas(couponList[i].getCouponProductPrice());
+			var chargeAmount = (couponList == null)?"":UIHelper.addThousandSeparatorCommas(couponList[i].getChargeAmount());  
+			var subscribed = (couponList == null)?0:couponList[i].getSubscribed();
+		%>
+		<ul class="coupon2 unfocus">
+		      <li class="img"></li> 
+		      <li class="sale">+<%= discountRate %>%</li>
+		      <li class="text"><%= couponProductName %></li> 
+		      <li class="price"><%= couponProductPrice %></li> 
+		      <li class="saving">(<%= chargeAmount %>원 적립)</li> 
+<% if(subscribed == 1)	{      %>
+		      <li class="icon"></li>
+<% }      %>
+		 </ul> 
+<%		}
+	//} 
+%>
+   </div><!-- //쿠폰-->
+   <div class="text_mini">※ 매월 1일 자동 충전되며 적립액은 이월되지 않습니다.</div>
+   <div class="btn_align">
+<%
+		if(model.getButtonGroup() != null)	{
+			var buttonSize = model.getButtonGroup().getSize();
+			for(var i = 0; i < buttonSize; i++) {
+%>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+			}
+		}
+%>     
+   </div>
+        
+  </div><!-- //mytv-->  

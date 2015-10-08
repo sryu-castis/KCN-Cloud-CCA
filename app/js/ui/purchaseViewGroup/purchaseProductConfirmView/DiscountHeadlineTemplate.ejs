@@ -1,0 +1,79 @@
+<%
+var product = model.getProduct();
+var coupon = model.getCoupon();
+var bundleProduct = model.getBundleProduct();
+
+if(product != null && coupon != null)	{
+    var price = "";
+    var listPrice = "";
+    var viewablePeriodText = "";
+    var dicountedPrice = 0;
+
+    if(bundleProduct != null) {
+        price = bundleProduct.getPrice();
+        listPrice = bundleProduct.getListPrice();
+        viewablePeriodText = DateHelper.getRentalPeriod(bundleProduct.getRentalDuration(), bundleProduct.getRentalDurationUnit());
+    } else {
+        price = product.getPrice();
+        listPrice = product.getListPrice();
+        viewablePeriodText = DateHelper.getViewablePeriodTextForPopup(product.getViewablePeriodState(), product.getViewablePeriod())
+    }
+    dicountedPrice = product.getPrice() - coupon.getDiscountAmount();
+    dicountedPrice = (dicountedPrice < 0) ? 0 : dicountedPrice;
+%>
+
+<div class="headline_bg03">
+      <span class="subtext04">
+            <p class="row">
+              <span class="head_text">가격</span>
+              <span class="sub_text01">
+<%
+  if(coupon != null && dicountedPrice > 0) {
+%>
+                  <span class="kor discount"><%= UIHelper.addThousandSeparatorCommas(price) %>원</span>
+<%
+  }
+%>
+                  <span class="price"><%= UIHelper.addThousandSeparatorCommas(dicountedPrice) %></span>
+                  <span class="won">원</span>
+              </span>
+              <span class="tax">(부가세 별도)</span>
+            </p>
+            <p class="row">
+                <span class="head_text">할인권</span>
+                <span class="sub_text01">
+                    <span class="price"><%= coupon.getDiscountAmount() %></span>
+                    <span class="won">원 적용</span>
+                </span>
+            </p>  
+            <p class="row">
+                <span class="head_text">시청기간</span>
+                <span class="sub_text01">
+                    <span class="num"><%= viewablePeriodText %></span>
+                    <!--span class="won">일</span-->
+                </span>
+            </p>                
+	  </span>           
+    </div>
+    <div class="bodyline_dd">할인권 적용이 가능합니다. 구매하시겠습니까?</div>
+<%        
+	var subSpanText = model.getInputField().getDefaultText();
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass();
+%>
+		<div class="bodyline_bb <%=textType%>"><%= subSpanText%></div>
+<%
+	}
+%>          
+
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+<%
+	var passwordLength = model.getInputField().getSize();
+	for(var i = 0; i < passwordLength; i++) { 
+%>
+			    <span class="num01 after"></span>
+<%  
+	} 
+}
+%>
+        </div>

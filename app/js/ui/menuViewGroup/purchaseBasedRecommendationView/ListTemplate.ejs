@@ -1,0 +1,26 @@
+<%
+	var purchaseLogList = model.getPurchaseLogList();
+	var startIndex = model.getVStartIndex();
+	var totalCount = model.totalCount;
+	var currentIndex = model.getVStartIndex() + model.getVIndex() + 1;
+ %>
+<ul class="list">
+<%
+	for (var row=0; row<6; row++) {
+		var index = startIndex + row;
+		if(index > purchaseLogList.length - 1) {
+			break;
+		}
+		var item = purchaseLogList[startIndex + row];
+		var title = item.getProductName();
+%>
+	<li class="unfocus"><%= title %></li>
+<%
+	};
+%>        
+</ul>
+<div class="page position_35">
+	<div class="pagenum"><span class="now"><%= currentIndex %></span><span class="slash">/</span><span class="all"><%= totalCount %></span></div>
+	<div class="pagedown unfocus"></div>
+</div>
+ 

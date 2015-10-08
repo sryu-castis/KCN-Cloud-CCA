@@ -1,0 +1,22 @@
+<%
+    var serviceMenuList = model.getData();
+    var max = serviceMenuList.length;
+    for(var i = 0; i < max; i++) {
+        var serviceMenu = serviceMenuList[i];
+        if(i==5){
+%>
+        <div class="icon_line"></div>
+<%
+        }
+%>
+
+        <ul class="icon<%= i+1%> unfocus">
+            <li class="img">
+                <img src="" width="52" height="52" onerror='this.src="resources/images/app_default.png"'>
+            </li>
+            <li class="text"><%= serviceMenu.getPresentationName()%></li>
+        </ul>
+<%
+
+    }
+%>

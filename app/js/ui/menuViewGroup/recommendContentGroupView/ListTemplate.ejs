@@ -1,0 +1,50 @@
+<%
+  var recommendList = model.getData();
+  if(recommendList == null || recommendList == undefined || recommendList.length == 0) {
+    var message = CCABase.StringSources.noData[310]; //ViewerType.RECOMMEND
+%>
+<div class="noimg"></div>
+<div class="notext"><%= message %></div>
+<%
+  } else {
+  var currentIndex = model.getVIndex() * model.getHVisibleSize() + model.getHIndex();
+  var currentTitle = model.getPurchasedTitle();
+%>
+<span class="icon_arr"></span>
+<span class="name"><p class="tit"><%= currentTitle %></p><p class="ex">연관 작품입니다.</p></span>
+
+<div class="vod_list"><!-- 포스터 리스트 시작-->
+
+
+<%
+  for(var row=0; row<model.getVMax(); row++) {
+%>
+        <div class="poster_group"><!-- 행시작-->
+<%
+    for(var column=0; column<3; column++) {
+      var index = row * model.getHVisibleSize() + column;
+      if(index+1 > recommendList.length) {
+%>
+        </div><!-- 2행 끝-->              
+<%
+        break;
+      }
+      var item = recommendList[index];
+      var image = item.getSmallImageFileName();
+      var title = item.getTitle();
+      var ribbon = UIHelper.getPosterRibbonName(item);
+%>      
+          <ul class="poster">
+            <li class="img"><img src="<%= image %>" onerror='this.src="resources/images/no_img_small.png"'/></li>
+            <li class="text"><%= title %></li> 
+            <li class="ribbon <%= ribbon %>"></li>    
+          </ul>
+<%
+    };
+%>
+        </div><!-- 2행 끝-->              
+<%
+  };
+};
+%>
+</div><!-- 포스터 리스트 끝-->

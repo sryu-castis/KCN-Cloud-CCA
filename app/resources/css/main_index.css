@@ -1,0 +1,244 @@
+/*20150325 castis*/
+@charset"utf-8";
+@import url('base.css');
+body:after {content: url(../images/cloud_bg02.png) -630px -90px no-repeat; content:url(../images/cloud_bg02.png) 0px -460px no-repeat; display: none;}
+body {width:960px; height:540px; font:12px "산세리프2"; color:#6f6f6f; line-height:15px;}
+input, select, textarea, table, tr, td, div, span {vertical-align:middle; font:12px "산세리프2"; color:#6f6f6f;}
+a {cursor:pointer;}
+body {width:960px; height:540px; overflow : hidden;}
+#purchasePopup {z-index:10;}
+
+/*Main */
+#index_main_bg  {width:960px;height:540px; margin:0;background:url(../images/cloud_bg01.png) -850px 0px no-repeat;  text-align:center;}
+
+#index_area_header {display:inline-block;width:880px;height:72px; margin-top:10px;}/*20150422*/
+#index_area_header .banner {display:inline-block; float:left; margin-left:-2px; text-align:left; border:#9F3 0px solid;}
+#index_area_header .banner.size1 img {width:434px;height:72px; display:inline-block; float:left; }
+#index_area_header .banner.size1 img.default{background:url(../images/cloud_etc.png)  -430px -370px  no-repeat;}
+#index_area_header .banner.size2 img {width:590px;height:72px; display:inline-block; float:left; }
+#index_area_header .banner.size2 img.default{background:url(../images/cloud_etc.png)  -430px -370px  no-repeat;}
+#index_area_header .banner.size3 img {width:879px;height:72px; display:inline-block; float:left; }
+#index_area_header .banner.size3 img.default{background:url(../images/cloud_etc.png)  -430px -370px  no-repeat;}
+
+#index_area_header .weather {width:292px;display:inline-block; border:#00C 0px solid; float:right; margin-top:25px;}
+#index_area_header .weather span.gr_date{display:inline-block; text-align:right;}
+#index_area_header .weather span.gr_date div.time{}
+#index_area_header .weather span.gr_date div.time span.min {font-size:22px; color:#fff;}
+#index_area_header .weather span.gr_date div.time span.ap  {color:#fff; font-size:10px;}
+#index_area_header .weather span.gr_date div.day{color:#0CC; font-size:12px;color:#fff;margin-top:5px;}
+#index_area_header .weather span.bar{display:inline-block;width:1px; height:40px; background-color:#CCC; margin:0 10px 0 10px;}
+#index_area_header .weather span.weath{display:inline-block;width:42px;height:42px; margin-right:10px;}
+#index_area_header .weather span.weath.default {width:42px;height:42px; }
+#index_area_header .weather span.weath.sky_a01{background:url(../images/cloud_etc.png)  -1250px -520px  no-repeat;}
+#index_area_header .weather span.weath.sky_a02{background:url(../images/cloud_etc.png)  -1060px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_a03{background:url(../images/cloud_etc.png)  -1110px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_a04{background:url(../images/cloud_etc.png)  -1160px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_a05{background:url(../images/cloud_etc.png)  -1210px -640px  no-repeat;}
+#index_area_header .weather span.weath.sky_a06{background:url(../images/cloud_etc.png)  -880px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_a07{background:url(../images/cloud_etc.png)  -1060px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_a08{background:url(../images/cloud_etc.png)  -1110px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_a09{background:url(../images/cloud_etc.png)  -1160px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_a10{background:url(../images/cloud_etc.png)  -850px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_a11{background:url(../images/cloud_etc.png)  -900px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_a12{background:url(../images/cloud_etc.png)  -950px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_a13{background:url(../images/cloud_etc.png)  -1000px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_a14{background:url(../images/cloud_etc.png)  -1050px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_o01{background:url(../images/cloud_etc.png)  -1250px -520px  no-repeat;}
+#index_area_header .weather span.weath.sky_o02{background:url(../images/cloud_etc.png)  -1060px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_o03{background:url(../images/cloud_etc.png)  -1110px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_o04{background:url(../images/cloud_etc.png)  -1160px -620px  no-repeat;}
+#index_area_header .weather span.weath.sky_o05{background:url(../images/cloud_etc.png)  -1210px -640px  no-repeat;}
+#index_area_header .weather span.weath.sky_o06{background:url(../images/cloud_etc.png)  -880px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_o07{background:url(../images/cloud_etc.png)  -1060px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_o08{background:url(../images/cloud_etc.png)  -1110px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_o09{background:url(../images/cloud_etc.png)  -1160px -670px  no-repeat;}
+#index_area_header .weather span.weath.sky_o10{background:url(../images/cloud_etc.png)  -850px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_o11{background:url(../images/cloud_etc.png)  -900px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_o12{background:url(../images/cloud_etc.png)  -950px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_o13{background:url(../images/cloud_etc.png)  -1000px -800px  no-repeat;}
+#index_area_header .weather span.weath.sky_o14{background:url(../images/cloud_etc.png)  -1050px -800px  no-repeat;}
+
+#index_area_header .weather span.gr_temper{display:inline-block;text-align:right;width:51px; position:relative; top:-5px; left:-7px;}
+#index_area_header .weather span.gr_temper div.local{font-size:10px;width:57px;color:#fff;display:inline-block;height:12px;}
+#index_area_header .weather span.gr_temper div.tem{font-size:26px; width:57px;color:#fff; height:26px;}
+#index_area_header .weather span.gr_temper div.tem em.icon {background:url("../images/icon_temper.png") left top no-repeat;width:18px; height:24px; display:inline-block;}
+#index_area_header .weather span.topbot{ float:right; position:relative; top:10px; left:-5px;}
+#index_area_header .weather span.topbot div.top{font-size:10px;color:#fff; text-align:right; height:14px;}
+#index_area_header .weather span.topbot div.top span {width:35px;display:inline-block;color:#fff;}
+#index_area_header .weather span.topbot div.bot{font-size:10px;color:#fff; height:14px;}
+#index_area_header .weather span.topbot div.bot span {width:35px;display:inline-block;color:#fff; text-align:right;}/*20150422*/
+
+#index_area_poster {display:inline-block;width:895px;margin-top:10px;}/*201504122*/
+#index_area_poster .poster.po1.unfocus {float:left; display:inline-block; width:123px;height:178px; position:absolute; left:32px;}/*20150410*/
+#index_area_poster .poster.po1.focus {float:left;display:inline-block;width:123px; height:178px; background:url(../images/cloud_btn.png)  0px -530px  no-repeat; z-index:0; margin-right:4px;  position:absolute; left:32px;}
+#index_area_poster .poster.po1 li.img {width:111px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden; }
+#index_area_poster .poster.po1 li.img img{width:111px; height:166px;}
+
+#index_area_poster .poster.po2.unfocus {float:left; display:inline-block; width:123px;height:178px; position:absolute; left:161px;}/*20150331*/
+#index_area_poster .poster.po2.focus {float:left;display:inline-block;width:123px; height:178px; background:url(../images/cloud_btn.png)  0px -530px  no-repeat; z-index:0; margin-right:4px; position:absolute; left:161px;}
+#index_area_poster .poster.po2 li.img {width:111px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden; }
+#index_area_poster .poster.po2 li.img img{width:111px; height:166px;}
+
+#index_area_poster .poster.po3.unfocus {float:left; display:inline-block; width:123px;height:178px; position:absolute; left:291px;}/*20150331*/
+#index_area_poster .poster.po3.focus {float:left;display:inline-block;width:123px; height:178px; background:url(../images/cloud_btn.png)  0px -530px  no-repeat; z-index:0; margin-right:4px;  position:absolute; left:291px;}
+#index_area_poster .poster.po3 li.img {width:111px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden; }
+#index_area_poster .poster.po3 li.img img{width:111px; height:166px;}
+
+#index_area_poster .poster.po4.unfocus {float:left; display:inline-block; width:123px;height:178px; position:absolute; left:421px;}/*20150331*/
+#index_area_poster .poster.po4.focus {float:left;display:inline-block;width:123px; height:178px; background:url(../images/cloud_btn.png)  0px -530px  no-repeat; z-index:0; margin-right:4px;  position:absolute; left:421px;}
+#index_area_poster .poster.po4 li.img {width:111px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden; }
+#index_area_poster .poster.po4 li.img img{width:111px; height:166px;}
+
+#index_area_poster .poster.po5.unfocus {float:left; display:inline-block; width:123px;height:178px; position:absolute; left:551px;}/*20150331*/
+#index_area_poster .poster.po5.focus {float:left;display:inline-block;width:123px; height:178px; background:url(../images/cloud_btn.png)  0px -530px  no-repeat; z-index:0; margin-right:4px;position:absolute; left:551px; }
+#index_area_poster .poster.po5 li.img {width:111px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden;}
+#index_area_poster .poster.po5 li.img img{width:111px; height:166px;}
+
+
+#index_area_poster .eventposter.unfocus {float:left; display:inline-block; width:241px;height:178px;  position:absolute; left:684px;}/*20150422*/
+#index_area_poster .eventposter.focus {float:left; display:inline-block;width:241px; height:178px; background:url(../images/cloud_btn.png)  -620px 0px no-repeat; z-index:0;  position:absolute; left:684px; z-index:2;}/*20150422*/
+#index_area_poster .eventposter li.img {width:229px; height:166px;white-space:nowrap; margin:6px 0 0 6px;text-overflow:ellipsis; overflow:hidden;}/*20150422*/
+#index_area_poster .eventposter li.img img{width:229px; height:166px; border: none;}
+#index_area_poster .eventposter li.img img.default{width:229px; height:166px; background:url(../images/cloud_etc.png)  -890px -40px  no-repeat; border:none;}
+
+#index_area_menu {display:inline-block;width:888px;}
+#index_area_menu .menu1.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;  top:276px; left:27px;}/*20150331*/
+#index_area_menu .menu1.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu1.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu1.unfocus li.text {float:left; width:100%; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0;}
+#index_area_menu .menu1.focus {float:left; display:inline-block;width:163px;height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute; top:276px; left:27px;}
+#index_area_menu .menu1.focus li.img{float:left;width:163px;height:141px; position:relative; top:0px; left:0px;}
+#index_area_menu .menu1.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu1.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+#index_area_menu .menu2.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;top:276px; left:175px;}
+#index_area_menu .menu2.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap;text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu2.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu2.unfocus li.text {float:left; width:163px; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0px;}
+#index_area_menu .menu2.focus {float:left;display:inline-block;width:163px;height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute;top:276px; left:175px;}
+#index_area_menu .menu2.focus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;border-radius:3px; position:relative; top:0px; left:0px;}
+#index_area_menu .menu2.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu2.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+#index_area_menu .menu3.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;top:276px; left:323px;}
+#index_area_menu .menu3.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu3.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu3.unfocus li.text {float:left; width:163px; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0px;}
+#index_area_menu .menu3.focus {float:left;display:inline-block;width:163px;height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute;top:276px; left:323px;}
+#index_area_menu .menu3.focus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;border-radius:3px;position:relative; top:0px; left:0px;}
+#index_area_menu .menu3.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu3.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+
+#index_area_menu .menu4.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;top:276px; left:471px;}
+#index_area_menu .menu4.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu4.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu4.unfocus li.text {float:left; width:163px; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0px;}
+#index_area_menu .menu4.focus {float:left; display:inline-block;width:163px;height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute;top:276px; left:471px;}
+#index_area_menu .menu4.focus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border-radius:3px;position:relative; top:0px; left:0px;}
+#index_area_menu .menu4.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu4.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+
+#index_area_menu .menu5.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;top:276px; left:619px;}
+#index_area_menu .menu5.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap;text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu5.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu5.unfocus li.text {float:left; width:163px; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0px;}
+#index_area_menu .menu5.focus {float:left; display:inline-block;width:163px;height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute;top:276px; left:619px;}
+#index_area_menu .menu5.focus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border-radius:3px; position:relative; top:0px; left:0px;}
+#index_area_menu .menu5.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu5.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+#index_area_menu .menu6.unfocus {float:left; display:inline-block; width:163px;height:141px;z-index:1;position:absolute;top:276px; left:767px;}
+#index_area_menu .menu6.unfocus li.img {float:left;width:163px;height:141px;white-space:nowrap;text-overflow:ellipsis; overflow:hidden;}
+#index_area_menu .menu6.unfocus li.img img{width:163px;height:141px;}
+#index_area_menu .menu6.unfocus li.text {float:left; width:163px; height:20px; font-size:16px; line-height:20px; color:#999; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-41px; left:0px;}
+#index_area_menu .menu6.focus {float:left;display:inline-block;width:163px; height:141px;background:url(../images/cloud_main4.png) 0px 0px no-repeat; z-index:2;position:absolute;top:276px; left:767px;}
+#index_area_menu .menu6.focus li.img {float:left;width:163px;height:141px;white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border-radius:3px;position:relative; top:0px; left:0px;}
+#index_area_menu .menu6.focus li.img img{width:163px;height:141px;}
+#index_area_menu .menu6.focus li.text {float:left; width:163px; height:20px; font-size:18px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:-38px; left:0px;}
+
+#index_area_app {display:inline-block;width:888px; height:97px;position:absolute; top:428px; left:36px;}
+#index_area_app .icon1.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon1.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon1.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon1.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon1.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon1.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon1.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon1.focus li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon2.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon2.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon2.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon2.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon2.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon2.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon2.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon2.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon2.focus li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon3.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon3.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon3.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon3.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon3.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon3.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon3.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon3.focus li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon4.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon4.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon4.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon4.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon4.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon4.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon4.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon4.focus li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon5.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon5.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon5.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon5.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon5.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon5.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon5.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon5.focus li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon6.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon6.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon6.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon6.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon6.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon6.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon6.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon6 li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon7.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon7.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon7.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon7.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon7.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon7.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon7.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon7 li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon8.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon8.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon8.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon8.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon8.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon8.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon8.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon8 li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon9.unfocus { display:inline-block; float:left;width:98px; height:97px;}
+#index_area_app .icon9.unfocus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon9.unfocus li.img img {width:42px; height:42px;}
+#index_area_app .icon9.unfocus li.text {opacity:0.0; -moz-opacity:0.0;  filter:alpha(opacity=0); zoom:1;}
+#index_area_app .icon9.focus {float:left;width:98px; height:97px;background:url(../images/cloud_btn.png)  -450px -410px no-repeat; z-index:0;}
+#index_area_app .icon9.focus li.img {width:42px; height:42px; margin:14px 0 0 28px;}
+#index_area_app .icon9.focus li.img img {width:42px; height:42px;}
+#index_area_app .icon9 li.text {width:100px; height:20px; font-size:14px; line-height:20px; color:#fff; font-family:"산세리프2"; text-align:center; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;position:relative; top:7px; left:0px;}
+
+#index_area_app .icon_line {background:url(../images/cloud_etc.png)  -770px -10px  no-repeat;width:2px; height:61px; display:inline-block; float:left; position:absolute; top:12px; left:490px;}

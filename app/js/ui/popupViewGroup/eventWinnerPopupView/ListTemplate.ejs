@@ -1,0 +1,34 @@
+<%
+    var winnerList = model.getData();
+    var currentPage = model.getCurrentPage() + 1;
+    currentPage = (model.getCurrentPage() == 0) ? 0 : currentPage;
+    var totalPage = model.getTotalPage();
+%>        
+        <div class="popup_list_title">
+            <span class="title_name01">당첨자 이름</span>
+            <span class="title_line"></span>
+            <span class="title_name02">연락처</span>
+        </div>
+        <div class="popup_list_body">
+            <span class="arw_left focus"></span>
+            <span class="list_table">
+<%
+    for(var row=0; winnerList != undefined && row<winnerList.length; row++) {
+        var winner = winnerList[row];
+        var name = winner.getWinnerName();
+        var mobile = winner.getMobileNumber();
+%>
+                <div class="row">
+                    <span class="name"><%= name %></span>
+                    <span class="mobile"><%= mobile %></span>
+                </div>
+<%
+    };
+%>
+            </span>
+            <span class="arw_right focus"></span>
+        </div>
+        <div class="area_page">
+            <span class="now"><%= currentPage %></span>
+            <span class="all">/<%= totalPage %></span>
+        </div>

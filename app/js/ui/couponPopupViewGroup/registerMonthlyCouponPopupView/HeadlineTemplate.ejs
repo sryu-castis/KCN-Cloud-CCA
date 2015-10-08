@@ -1,0 +1,30 @@
+<%
+	var headTitle = model.getNotice1();
+ 	var headSubtitle = model.getNotice2();
+%>
+ <div class="headline_bg01">
+        	<p class="headtext_01"><%= headTitle %></p>
+            <p class="headtext_02"><%= headSubtitle %></p>
+        </div>
+        <div class="bodyline_cc"><%= model.getNotice3() %></div>
+<%        
+	var subSpanText = model.getInputField().getDefaultText();
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass();
+%>
+		<div class="bodyline_bb <%=textType%>"><%= subSpanText%></div>
+<%
+	}
+%>           
+
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+<%
+	var passwordLength = model.getInputField().getSize();
+	for(var i = 0; i < passwordLength; i++) { 
+%>
+			    <span class="num01 after"></span>
+<%  
+	} 
+
+%>
+        </div>

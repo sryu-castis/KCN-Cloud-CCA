@@ -1,0 +1,58 @@
+<div id="popup_m"> <!--팝업 전체 시작 -->
+    <div class="bg"> <!--bg 시작 -->
+        <div class="title">
+            <%
+            if(model.getIconType() != null && model.getIconType() != '') {
+            %>
+            <span class="icon_tit <%= model.getIconType()%>"></span>
+            <%
+            }
+            %>
+            <span class="text"><%= model.getTitle()%></span>
+        </div>
+        <%
+        var lineReggie = /<br>/gi;
+        var headText = model.getHeadText();
+        if(headText != null) {
+            var headTextClass = model.getHeadTextClass();
+            var headRow = "row0";
+            if(lineReggie.test(headText)) {
+                headRow += headText.match(lineReggie).length+1;
+            } else {
+                headRow += "1";
+            }
+        %>
+        <div class="<%= headTextClass %> <%= headRow %>"><%= headText %></div ><!--1줄일때 row01, 2줄일때 row02 -->
+        <%
+        }
+
+        var subText = model.getSubText();
+        if(subText != null) {
+            var subTextClass = model.getSubTextClass();
+            var subRow = "row0";
+            if(lineReggie.test(subText)) {
+                subRow += subText.match(lineReggie).length+1;
+            } else {
+                subRow += "1";
+            }
+        %>
+        <div class="<%= subTextClass %> <%= subRow %>"><%= subText%></div>
+        <%
+        }
+        var buttonSize = model.getButtonGroup().getSize()
+        if(buttonSize > 0) {
+        %>
+
+        <div class="area_btn">
+            <%
+            for(var i = 0; i < buttonSize; i++) {
+            %>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%
+            }
+        }
+            %>
+        </div>
+
+    </div><!--bg 끝-->
+</div><!--//팝업 전체 끝-->

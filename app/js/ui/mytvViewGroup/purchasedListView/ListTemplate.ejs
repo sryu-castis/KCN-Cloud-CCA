@@ -1,0 +1,83 @@
+<% 
+	var purchaseLogList = model.getData();
+	var remainRow = model.getPageSize();
+	var viewableDateString = "";
+	var purchaseLog = null;
+
+	if(purchaseLogList != null && purchaseLogList.length != 0)	{
+		for(var i = 0; i < purchaseLogList.length; i++) {
+
+			purchaseLog = purchaseLogList[i];
+
+			if(purchaseLog.getViewablePeriodState() == 1) {
+				viewableDateString = "무제한시청";
+			} else if(purchaseLog.getPurchasedID() == null
+					|| purchaseLog.getPurchasedID() == 0
+					|| purchaseLog.getPurchasedID() == ""
+					|| purchaseLog.getPurchasedTime() == null
+					|| purchaseLog.getPurchasedTime() == "") {
+				viewableDateString = "기간만료";
+			} else if (purchaseLog.getLicenseEnd() != null
+					&& purchaseLog.getLicenseEnd() != ""
+					&& DateHelper.getDateObject(purchaseLog.getLicenseEnd()) - new Date() < 0) {
+				viewableDateString = "기간만료";
+			} else {
+				viewableDateString = DateHelper.getViewableDateString(purchaseLog.getPurchasedTime(), purchaseLog.getViewablePeriod());
+			}
+
+			var paymentType = "";
+			switch (purchaseLogList[i].getPaymentType()) {
+				case PaymentType.Normal:
+					paymentType = StringValues.PaymentType.NORMAL;
+					break;
+				case PaymentType.Coupon:
+					paymentType = StringValues.PaymentType.COUPON;
+					break;
+				case PaymentType.Point:
+					paymentType = StringValues.PaymentType.POINT;
+					break;
+				case PaymentType.Mobile:
+					paymentType = StringValues.PaymentType.MOBILE;
+					break;
+                case PaymentType.Complex:
+                    paymentType = StringValues.PaymentType.COMPLEX;
+					break;
+			}
+%>
+			<tr class="unfocus"><!--unfocus,focus,selected-->
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr><%= purchaseLog.getProductName() %></nobr></td>
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="right"><%= viewableDateString %></td>
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="cen"><%= paymentType %></td>
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="right"><%= UIHelper.addThousandSeparatorCommas(purchaseLog.getPrice()) %>원</td>
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="cen"><%= DateHelper.getDateWeekTimeString(purchaseLog.getPurchasedTime()) %></td> <!--12월 28일 (화) PM 23:59-->
+	        </tr>
+<%		
+		}
+		remainRow -= purchaseLogList.length;
+
+
+		for(var i = 0; i < remainRow; i++) {
+%>
+<tr class="unfocus"><!--unfocus,focus,selected-->
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="right"></td>
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="cen"></td>
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="right"></td>
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="cen"></td> <!--12월 28일 (화) PM 23:59-->
+</tr>
+<%
+		}
+	}
+%>
+<%
+
+
+if(model.isListFetched() == true && (purchaseLogList == null || purchaseLogList.length == 0))	{
+%>
+	<div class="nodata">
+      <div class="img"></div>
+      <div class="tex">구매목록이 없습니다.</div>
+    </div> 
+<%
+}
+%>

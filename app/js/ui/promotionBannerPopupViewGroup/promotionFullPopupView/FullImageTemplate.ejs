@@ -1,0 +1,10 @@
+<div class="area_content">
+    <%
+        var promoWindow = model.getData();
+        var image = null;
+        if(promoWindow.getPromoWindowPosterList()[0]){
+            image = promoWindow.getPromoWindowPosterList()[0].getImage();
+        }
+     %>
+    <div class="bigimg"><img src=<%= image %>></div>
+</div>

@@ -1,0 +1,62 @@
+<%
+    var eventList = model.getData();
+    
+%>
+        <table cellpadding="0" cellspacing="0" class="vodbox_list">
+            <colgroup>
+                <col width="45%">
+                <col width="35%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>이벤트 명</th>
+                    <th>응모기간</th>
+                    <th>응모현황</th>
+                </tr>
+            </thead>
+            <tbody> 
+<%
+        for(var i=0; i<6; i++) {
+            if(eventList.length == 0) {
+                break;
+            }
+            var index = model.getVStartIndex() + i;
+            if(index < eventList.length) {
+                var item = eventList[index];
+                var title = item.getEventTitle();
+                var startTime = item.getStartTime().split(" ")[0].replace(/-/g,"/");
+                var endTime = item.getEndTime().split(" ")[0].replace(/-/g,"/");
+                var enroll = (item.getEventEnroll()) == 1 ? "참여" : "미참여";
+%>
+                <tr><!--unfocus,focus,selected-->
+                    <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr><%= title %></nobr></td>
+                    <td class="cen"><%= startTime %> ~ <%= endTime %></td>
+                    <td class="cen"><%= enroll %></td>
+                </tr>                
+<%
+            } else {
+%>
+                <tr><!--unfocus,focus,selected-->
+                    <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+                    <td class="cen"></td>
+                    <td class="cen"></td>
+                </tr>                
+<%
+            };
+        };
+%>
+            </tbody>
+        </table>
+<%
+    if(eventList == null || eventList == undefined || eventList.length == 0) {
+        var message = CCABase.StringSources.noData[0]; //ViewerType.DEFAULT
+        //message = "VOD 진행중 이벤트 목록이 없습니다.";
+%>
+        <div class="nodata">
+          <div class="img"></div>
+          <div class="tex"><%= message %></div>
+        </div>
+<%
+    }
+%>

@@ -1,0 +1,36 @@
+
+<% 
+	var serviceLogList = model.getData();
+	var remainRow = model.getPageSize();
+	
+	if(serviceLogList != null && serviceLogList.length != 0)	{
+		for(var i = 0; i < serviceLogList.length; i++) {
+			
+%>
+			<tr class="unfocus"><!--unfocus,focus,selected-->
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr><%= serviceLogList[i].getAssetTitle() %></nobr></td>
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="cen"><nobr><%= DateHelper.getDateWeekTimeString(serviceLogList[i].getServiceStartTime()) %></nobr></td> <!--12월 28일 (화) PM 23:59-->
+	        </tr>
+<%		
+		}
+		remainRow -= serviceLogList.length;
+
+		for(var i = 0; i < remainRow; i++) {
+%>
+<tr class="unfocus"><!--unfocus,focus,selected-->
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+	<td class="cen"></td> <!--12월 28일 (화) PM 23:59-->
+</tr>
+<%
+		}
+	}
+
+if(model.isListFetched() == true && (serviceLogList == null || serviceLogList.length == 0))	{
+%>
+	<div class="nodata">
+      <div class="img"></div>
+      <div class="tex">시청목록이 없습니다.</div>
+    </div> 
+<%
+}
+%>

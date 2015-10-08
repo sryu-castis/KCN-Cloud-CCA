@@ -1,0 +1,56 @@
+<%
+var product = model.getProduct();
+var price = model.getMobilePayment()
+var viewablePeriodText = DateHelper.getViewablePeriodTextForPopup(product.getViewablePeriodState(), product.getViewablePeriod());
+var isConfirmFail = model.isConfirmFail();
+%>
+<div id="popup_xlarge"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">구매하기</span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+        <div class="body_title02"><%=product.getProductName()%></div>
+        <div class="headline_bg02">
+          <span class="subtext03">
+                <p class="row">
+                  <span class="head_text letter_space32">가격</span><!--20150127 수정 -->
+                  <span class="sub_text01">
+                      <span class="price"><%= UIHelper.addThousandSeparatorCommas(price) %></span>
+                      <span class="won">원 (부가세 별도)</span>
+                  </span>
+                </p>
+                <p class="row">
+                    <span class="head_text">시청기간</span>
+                    <span class="sub_text01">
+                        <span class="num"><%= viewablePeriodText %></span>
+                        <!--<span class="won">일</span>-->
+                    </span>
+                </p>
+		  </span>
+        </div>
+        <div class="bodyline_aa">
+            고객님의 휴대폰으로 결제문자를 발송하였습니다.
+            <br>*결제 방법*
+            <br>1. 수신 받은 문자에서 결제 서비스 진입(URL접속)
+            <br>2. 결제정보 입력 및 승인(시간이 지연될 경우 취소 됨)
+            <br>
+            <% if(isConfirmFail){ %>
+            <span class="error">휴대폰에서 결제 승인을 완료해 주세요.</span>
+            <% } else { %>
+            <span class="normal">결제 완료 승인 후 자동 재생 됩니다.</span>
+            <% } %>
+        </div>
+        <div class="area_btn">
+            <%
+            var buttonSize = model.getButtonGroup().getSize()
+            if(buttonSize > 0) {
+            for(var i = 0; i < buttonSize; i++) {
+            %>
+            <span class="bt_147"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%      }
+            }
+            %>
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

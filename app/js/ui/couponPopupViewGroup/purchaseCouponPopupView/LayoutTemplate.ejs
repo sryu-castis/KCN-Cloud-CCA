@@ -1,0 +1,63 @@
+<div id="popup_large"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text">상품 구매</span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+        <div class="headline_bg01">
+<%
+		var couponProductPrice = UIHelper.addThousandSeparatorCommas(model.getData().getCouponProductPrice());
+		var chargeAmount = UIHelper.addThousandSeparatorCommas(model.getData().getChargeAmount()); 
+%> 
+        	<p class="headtext"><%= couponProductPrice %>원 쿠폰</p>
+       	
+            <p class="subtext_name01">
+                <span class="position_04">
+                
+                    <span class="text">가격:</span>
+                    <span class="num"><%= couponProductPrice %><span class="kor">원</span></span>
+                    <span class="text_sub">(<%= chargeAmount %>원 적립)</span>
+                </span>
+                <span class="position_05">
+                    <span class="text">유효기간:</span>
+                    <span class="num"><%= model.getData().getExpirationInfo() %></span>
+                </span>
+            </p>           
+        </div>
+        <div class="bodyline_aa">구매하시겠습니까?</div>
+<%        
+	var subSpanText = model.getInputField().getDefaultText();
+	if(subSpanText != null && subSpanText != "")	{
+		var textType = model.getSubSpanClass();
+%>
+		<div class="bodyline_bb <%=textType%>"><%=subSpanText%></div>
+<%
+	}
+%>  
+        <div class="body_serialbox_pw01 unfocus"><!-- focus, unfocus 중 택일-->
+         	 <%
+			var passwordLength = model.getInputField().getSize();
+			for(var i = 0; i < passwordLength; i++) { %>
+			    <span class="num01 after"></span>
+		    <%  } %>
+        </div>
+        <%
+
+        var buttonSize = model.getButtonGroup().getSize()
+        if(buttonSize > 0) {
+            var ea = (buttonSize > 1) ? "ea02": "ea01";
+        %>
+
+        <div class="area_btn <%= ea%>"><!--버튼 2개일때 ea02, 1개일때 ea01-->
+        <%
+
+            for(var i = 0; i < buttonSize; i++) {
+        %>
+                <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+        <%
+            }
+        }
+        %>
+        </div>
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

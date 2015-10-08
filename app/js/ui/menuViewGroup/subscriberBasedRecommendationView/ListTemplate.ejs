@@ -1,0 +1,94 @@
+<%
+    var assetList = model.getData();
+%>
+  <div class="vod"><!-- VOD포스터 영역-->
+  
+    <div class="poster_group mgt50"><!-- 1행 시작-->
+    <%
+        for(var index=0; index<4; index++) {
+            if(index >= assetList.length) {
+                break;
+            };
+            var asset = assetList[index];
+            var image = asset.getSmallImageFileName();
+            var title = asset.getTitle();
+            if(model.getViewType() == DefineView.ASSET_LIST_VIEW)	{
+            	var ribbon = UIHelper.getPosterRibbonNameForAsset(asset);
+            }
+            else	{
+            	var ribbon = UIHelper.getRankingIconClassName(model.getVStartIndex()*4+index);
+            } 
+            var genre = asset.getGenre();
+            var runningTime = UIHelper.transformHourMinuteTimeToMinuteTime(asset.getRunningTime());
+            var rating = UIHelper.getRatingName(UIHelper.getNormalizationRating(asset.getRating()));
+            var director = asset.getDirector();
+            var starring = asset.getStarring();
+            var promotionCopy = asset.getPromotionCopy();
+    %>
+        <ul class="poster">
+            <li class="img"><img src="<%= image %>" onerror='this.src="resources/images/no_img_middle2.png"'/></li> 
+            <li class="text"><%= title %></li>
+            <li class="ribbon <%= ribbon %>"></li>
+            <li class="tx1 position_31">
+                <span class="genre"><%= genre %></span>•<span><%= runningTime %>분</span>•<span class="icon <%= rating %>"></span>
+            </li>
+            <li class="tx1 position_32">감독:<%= director %></li>
+            <li class="tx1 position_33"><%= starring %></li>
+            <li class="event"><%= promotionCopy%></li>
+        </ul>
+    <%
+        };
+    %>
+     </div>
+     
+     <div class="poster_group"><!-- 2행 시작-->
+     <%
+        for(var index=4; index<8; index++) {
+            if(index >= assetList.length) {
+                break;
+            };
+            var asset = assetList[index];
+            var image = asset.getSmallImageFileName();
+            var title = asset.getTitle();
+            if(model.getViewType() == DefineView.ASSET_LIST_VIEW)	{
+            	var ribbon = UIHelper.getPosterRibbonNameForAsset(asset);
+            }
+            else	{
+            	var ribbon = UIHelper.getRankingIconClassName(model.getVStartIndex()*4+index);
+            } 
+            
+            var genre = asset.getGenre();
+            var runningTime = UIHelper.transformHourMinuteTimeToMinuteTime(asset.getRunningTime());
+            var rating = UIHelper.getRatingName(UIHelper.getNormalizationRating(asset.getRating()));
+            var director = asset.getDirector();
+            var starring = asset.getStarring();
+            var promotionCopy = asset.getPromotionCopy();
+     %>
+        <ul class="poster">
+            <li class="img"><img src=<%= image %>></li> 
+            <li class="text"><%= title %></li>
+            <li class="ribbon <%= ribbon %>"></li>
+            <li class="tx1 position_31">
+                <span class="genre"><%= genre %></span>
+                <span>/<%= runningTime %>분/</span>
+                <span class="icon <%= rating %>"></span>
+            </li>
+            <li class="tx1 position_32">감독:<%= director %></li>
+            <li class="tx1 position_33"><%= starring %></li>
+            <li class="event"><%= promotionCopy%></li>
+        </ul>
+    <%
+        };
+    %>    
+       </div>     
+     </div> <!--// VOD포스터 영역-->
+     <!-- <div class="topdim"></div> -->
+     <div class="dim unfocus"></div>
+     <div class="scrollbg"><!--20150122스크롤바--> 
+       <div class="scroll"></div>
+     </div> 
+   
+     <div class="bt_bottom"><!-- bt_bottom -->
+       <span class="bt_yellow"></span>
+       <span class="bt_text">리스트보기</span>
+     </div><!-- //bt_bottom --> 

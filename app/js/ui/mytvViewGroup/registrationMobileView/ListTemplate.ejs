@@ -1,0 +1,37 @@
+
+<% 
+	var userList = model.getData();
+	var remainRow = model.getPageSize();
+	if(userList != null && userList.length != 0)	{
+		for(var i = 0; i < userList.length; i++) {
+			
+%>
+			<tr class="unfocus"><!--unfocus,focus,selected-->
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="cen"><nobr><%= userList[i].getPhoneNumber() %></nobr></td>
+	            <td class="cen"><%= DateHelper.getDateWeekTimeString(userList[i].getRegistrationTime()) %></td> <!--12월 28일 (화) PM 23:59-->
+	        </tr>
+<%		
+		}
+		remainRow -= userList.length;
+
+		for(var i = 0; i < remainRow; i++) {
+%>
+<tr class="unfocus"><!--unfocus,focus,selected-->
+	<td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+	<td class="cen"></td>
+</tr>
+<%
+	}
+}
+%>
+<%
+
+if(model.isListFetched() == true && (userList == null || userList.length == 0))	{
+%>
+	<div class="nodata_p">
+      <div class="img"></div>
+      <div class="tex">목록이 없습니다.</div>
+    </div> 
+<%
+}
+%>

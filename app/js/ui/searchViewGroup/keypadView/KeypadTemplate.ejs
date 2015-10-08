@@ -1,0 +1,29 @@
+<%
+  
+%>
+    <span class="keybg1 ">한/영/수</span>
+    <span class="keybg1 "><span class="back"></span>지우기</span>
+<%
+    for(var row=0; row<4; row++) {
+%>
+    <div class="key_line">
+<%
+      for(var column=0; column<3; column++) {
+        var index = row * 3 + column;
+        if(row == 3 && model.getKeypadMode() < 2) {
+%>
+          <span class="keybg2 "><div><%= keypadMap[index] %></div></span>
+<%
+        } else {
+%>
+          <span class="keybg2 "><%= keypadMap[index] %></span>
+<%   
+        };
+      };
+%>
+    </div>
+<%
+    };
+%>
+    <span class="keybg3 ">확인</span>
+    <span class="keybg3 ">취소</span>

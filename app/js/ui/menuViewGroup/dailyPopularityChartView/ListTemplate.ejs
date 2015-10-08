@@ -1,0 +1,60 @@
+<%
+    var popularityList = model.getPopularityList();
+    var startIndex = model.getVStartIndex();
+    var selectedIndex = (popularityList.length == 0) ? 0 : model.getVStartIndex() + model.getVIndex() + 1;
+%>
+<p class="title"><span class="text">실시간 인기순위</span></p>
+<p class="title_underline"></p>
+<div class="list_group01"><!--메뉴 리스트 시작--> 
+    <%  for(var row=0; row<7; row++) {
+            var index = startIndex + row;
+            if(index + 1 > popularityList.length) {
+                break;
+            };
+            var popularity = popularityList[index];
+            var title = popularity.getTitle();
+            var comparision = UIHelper.getRankingChartComparisionName(popularity);
+            var number = Math.abs(parseInt(popularity.getComparision()));
+    %>
+    <ul class="list">
+        <span class="blit"><%= popularity.getRanking() %>.</span>
+        <span class="text"><%= title %></span>
+    <%
+        if(comparision == 'NEW') {
+            var focus = model.getVIndex() == row ? 'focus' : 'unfocus';
+    %>
+            <span class="icon_text <%= focus %>">NEW</span>
+    <%            
+        } else if (comparision == '-') {
+    %>
+            <span class="icon_hyp"></span>
+    <%
+        } else {
+    %>
+            <span class="icon_rank <%= comparision %>"></span><!-- up, down 택일-->
+            <span class="icon_num"><%= number %></span> 
+    <%
+        }
+    %>
+             
+    </ul>
+    <%
+        };
+    %>
+</div><!--메뉴 리스트 끝 -->           
+<div class="area_page">
+    <p class="page"><span class="now"><%= selectedIndex %></span><span class="all">/<%= popularityList.length %></span></p>
+<%
+    if(type == 'vodRanking') {
+%>
+    <p class="arw"></p><!-- focus, unfocus 택일-->
+<%
+    } else {
+%>
+    <div class="arr_down">
+      <span class="arw unfocus"></span><!-- focus, unfocus 택일-->
+    </div>
+<%
+    }
+%>
+</div>

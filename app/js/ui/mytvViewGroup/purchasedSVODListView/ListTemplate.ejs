@@ -1,0 +1,104 @@
+<div class="title violet">월정액 가입목록</div>
+<div class="second_tit">가입한 월정액 상품목록입니다.</div>
+
+<div class="list_wrap position_23"><!-- wrap-->
+
+<table cellpadding="0" cellspacing="0" class="vodbox_list">
+	<colgroup>
+		<col width="50%">
+		<col width="20%">
+		<col width="30%">
+	</colgroup>
+	<thead>
+	<tr>
+		<th>가입목록</th>
+		<th>구분</th>
+		<th>가입날짜</th>
+	</tr>
+	</thead>
+	<tbody>
+	<%
+	var productInfoList = model.getData();
+	var remainRow = model.getVVisibleSize();
+
+	var reggie = /(\d{4})(\d{2})(\d{2})/; //YYYYMMDD
+
+	function getDateString(dateString) {
+    	var dateArray = reggie.exec(dateString);
+    	return (dateArray[1])+"년 "+(dateArray[2])+"월 "+(dateArray[3])+"일";
+	}
+
+	if(productInfoList != null && productInfoList.length != 0)	{
+		var focusedIndex = model.getVIndex();
+		var start = model.getVStartIndex();
+		var vSize = 0;
+		for(var i = start; i < start+model.getVVisibleSize(); i++) {
+//		for(var i = 0; i < productInfoList.length; i++) {
+			if(productInfoList[i] == null) break;
+			vSize++;
+%>
+			<tr class="unfocus"><!--unfocus,focus,selected-->
+	            <td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr><%= productInfoList[i].getProductName() %></nobr></td>
+	            <td class="cen"><%= productInfoList[i].getProductType() %></td>
+	            <td class="cen"><%= getDateString(productInfoList[i].getIssueDate()) %></td> <!--12월 28일 (화) PM 23:59-->
+	        </tr>
+<%
+		}
+//		remainRow -= productInfoList.length;
+		remainRow -= vSize;
+
+
+		for(var i = 0; i < remainRow; i++) {
+%>
+	<tr class="unfocus"><!--unfocus,focus,selected-->
+		<td style="text-overflow:ellipsis;overflow:hidden;" class="left"><nobr></nobr></td>
+		<td class="cen"></td>
+		<td class="cen"></td> <!--12월 28일 (화) PM 23:59-->
+	</tr>
+	<%
+		}
+	}
+%>
+	</tbody>
+</table>
+<%
+
+
+if(model.isListFetched() == true && (productInfoList == null || productInfoList.length == 0))	{
+%>
+	<div class="nodata">
+      <div class="img"></div>
+      <div class="tex">월정액 가입 목록이 없습니다.</div>
+    </div> 
+<%
+}
+%>
+<div class="postion bt2_6"><!--레이어버튼 : bt1~6 선택된 행 순서에 따라 정해짐. 1행이 selected 인경우 bt1-->
+	<!--span class="inbt focus">해지</span>
+      <span class="inbt unfocus mgl4">닫기</span-->
+	<%
+	var buttonSize = model.getButtonGroup().getSize()
+	if(buttonSize > 0) {
+		for(var i = 0; i < buttonSize; i++) {
+	%>
+		<span class="inbt unfocus mgl4"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+	<%
+		}
+	}
+	%>
+</div>
+</div>
+<div class="page position_39">
+	<%
+	if(productInfoList != null && productInfoList.length > 0){
+		//pageIndex = parseInt((model.getVStartIndex()+model.getVIndex())/model.getVVisibleSize())+1;
+		//totalPage = parseInt((productInfoList.length-1)/model.getVVisibleSize())+1;
+		var currentIndex = model.getVStartIndex()+model.getVIndex()+1;
+		var totalCount = productInfoList.length;
+	%>
+	<div class="pagenum"><span class="now"><%= currentIndex %></span><span class="all">/<%= totalCount %></span></div>
+	<div class="pagedown mgt5 unfocus"></div>
+<%
+	}
+%>	
+</div><!--//wrap-->

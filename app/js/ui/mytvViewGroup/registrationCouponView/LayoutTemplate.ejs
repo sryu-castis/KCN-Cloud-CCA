@@ -1,0 +1,34 @@
+<div id="mytv"><!-- mytv-->
+    <div class="title violet">쿠폰등록</div>
+    <div class="second_tit">수령하신 쿠폰 인증번호를 입력하시면 쿠폰 금액 충전 또는 월정액 상품을 무료로</div>
+    <div class="second_tit2">이용하실 수 있습니다.</div>
+<% 
+    var infoString = model.getInfoString(); 
+	var str1 = model.getInputField1().getInputText();
+	var str2 = model.getInputField2().getInputText();
+	var str3 = model.getInputField3().getInputText();
+	
+%>
+   <div class="text normal"><%=infoString %></div><!-- 쿠폰번호 오류인경우 error-->
+   
+   <div class="position_27">
+     <span class="pwbox unfocus letter_space12"><%=str1 %></span>
+     <span class="pwbox unfocus letter_space12"><%=str2 %></span>
+     <span class="pwbox unfocus letter_space12"><%=str3 %></span>
+   </div>
+   
+   <div class="btn_align">
+<%
+            var buttonSize = model.getButtonGroup().getSize();
+        	if(buttonSize > 0) {
+            	for(var i = 0; i < buttonSize; i++) {
+%>
+            <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+<%
+	            }
+	        }
+        
+%>       
+   </div>
+        
+  </div><!-- //mytv-->  

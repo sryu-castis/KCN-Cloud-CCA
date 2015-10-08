@@ -1,0 +1,14 @@
+<% 
+	var categoryList = model.getData();
+	var max = model.getVVisibleSize();
+
+	for(var i = 0; i < max; i++) {
+		var categoryName = "";
+		if(categoryList != null && categoryList[i + model.getVStartIndex()] != null) {
+			categoryName = categoryList[i + model.getVStartIndex()].getCategoryName();
+		}
+%>
+		<li class="menu_box unfocus">
+            <span class = "menu"><%= categoryName%></span>
+		</li>
+<% } %>

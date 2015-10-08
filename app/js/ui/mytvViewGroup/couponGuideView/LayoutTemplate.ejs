@@ -1,0 +1,36 @@
+<div id="mytv"><!-- mytv-->
+
+    <div class="list_wrap position_25"><!-- wrap-->
+       <table cellpadding="0" cellspacing="0" class="vodbox_list">
+            <colgroup>
+                <col width="10%">
+                <col width="90%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>내용</th>
+                </tr>
+            </thead>
+            <tbody> 
+<% 
+var guideList = model.getData();
+var focusedIndex = model.getVIndex();
+var start = model.getVStartIndex();
+
+var max = (guideList.length < model.getVisibleVMax())?guideList.length:model.getVisibleVMax();
+for(var i = start; i < start+max; i++) {
+ %>
+                <tr class="unfocus">
+                    <td class="cen"><%= guideList[i].id %></td>
+                    <td class="left"><%= guideList[i].title %></td>
+                </tr> 
+<%}       %>         
+            </tbody>
+            </table>
+          </div><!--//wrap-->
+    <div class="page position_39">
+        <div class="pagenum"><span class="now"><%= parseInt(model.getVStartIndex()+model.getVIndex())+1 %></span><span class="all">/<%= parseInt(guideList.length) %></span></div>
+        <div class="pagedown mgt5 unfocus">
+        </div>
+    </div><!-- //mytv-->

@@ -1,0 +1,44 @@
+<div id="popup_large"> <!--팝업 전체 시작 -->
+    <div class="bg_top"> <!--배경 Top 영역 시작 -->
+        <div class="title">
+            <span class="text"><%= model.getTitle()%></span>
+        </div>
+        <div class="tit_line"></div><!--20150622 추가 -->
+
+        <div class="headline_bg03">
+            <p class="head_slogan07"><%= model.getHeadText()%></p>
+            <p class="head_slogan08"><%= model.getSubText()%></p>       
+        </div>
+        <div class="area_btn_finish">
+            <%
+            	if(model.getButtonGroup() != null)	{
+	                var buttonSize = model.getButtonGroup().getSize();
+	        	    if(buttonSize > 0) {
+	                	for(var i = 0; i < buttonSize; i++) {
+            %>
+                    <span class="bt_147 unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+            <%
+	                	}
+	            	}
+	            }
+            %>
+        </div>
+        <div class="area_posterlist_line2"></div>
+        <div class="area_posterlist_img2"> <!-- area_posterlist_img 시작 -->
+<%
+             var contentGroupList = model.getData();
+             for(var i = 0 ; contentGroupList != null && i < contentGroupList.length; i++) {
+                var contentGroup = contentGroupList[i];
+                var ribbonName = UIHelper.getPosterRibbonName(contentGroup);
+                var imageURL = contentGroup.getSmallImageFileName();
+%> 
+                <ul class="poster_list">
+                    <li class="img"><img src="<%= imageURL %>"></li>
+                    <li class="ribbon <%= ribbonName%>"></li>
+                </ul>
+        <%
+           	}
+        %>
+        </div><!-- area_posterlist_img 끝 -->
+    </div><!--//배경 Top 영역 끝 -->
+</div><!--//팝업 전체 끝-->

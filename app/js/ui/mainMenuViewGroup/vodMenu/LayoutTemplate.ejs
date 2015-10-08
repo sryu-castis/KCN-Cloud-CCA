@@ -1,0 +1,16 @@
+<%
+    var categoryList = model.getData();
+    var max = categoryList.length;
+
+    for(var i = 0; i < max; i++) {
+        var category = categoryList[i];
+%>
+    <ul class="menu<%= i+1%> unfocus">
+        <li class="img">
+            <img src="" width="147" height="117" onerror='this.src="resources/images/menu_default.png"'>
+        </li>
+        <li class="text"><%= category.getPresentationName()%></li>
+    </ul>
+<%
+    }
+%>

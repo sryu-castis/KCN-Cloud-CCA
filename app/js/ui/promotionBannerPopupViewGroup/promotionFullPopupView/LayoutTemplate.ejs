@@ -1,0 +1,19 @@
+<div id="promotion"><!--  전체 프레임 시작 -->
+    <div class="promotion_bg">
+
+    </div>
+    <div class="area_btn">
+        <%
+            var buttonSize = model.getButtonGroup().getSize();
+
+            if(buttonSize > 0) {
+                for(var i = 0; i < buttonSize; i++) {
+        %>
+                    <span class="button unfocus"><%= model.getButtonGroup().getButton(i).getLabel() %></span>
+        <%
+                }
+            }
+        %>
+    </div>
+
+</div><!-- // 전체 프레임 끝 -->
